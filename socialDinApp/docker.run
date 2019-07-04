@@ -1,1 +1,1 @@
-docker run -it -v ${PWD}:/app -v /app/node_modules -p 8080:4200 --rm osocspain/social-web:latest
+docker run -d --restart true --name social-web -v ${PWD}:/app -v /app/node_modules -p 5042:4200 --rm osocspain/social-web:latest
