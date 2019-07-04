@@ -10,13 +10,12 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class MainComponent implements OnInit {
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal) {
-    config.backdrop = 'static';
-    config.keyboard = false;
-  }
+  constructor(config: NgbModalConfig, private modalService: NgbModal) { }
 
   open() {
-    this.modalService.open(LoginComponent, { windowClass: 'modal-dialog'});
+    this.modalService.open(LoginComponent, {
+      centered: true
+    });
   }
 
   ngOnInit() {

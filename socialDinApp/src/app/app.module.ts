@@ -8,12 +8,10 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
   { path: '' , component: MainComponent },
-  { path: 'register', component: RegisterComponent },
 ];
 
 @NgModule({
@@ -21,7 +19,6 @@ const appRoutes: Routes = [
     LoginComponent,
     AppComponent,
     MainComponent,
-    RegisterComponent
   ],
   imports: [
     BrowserModule,
