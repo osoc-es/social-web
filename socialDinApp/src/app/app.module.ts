@@ -1,0 +1,40 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { MainComponent } from './main/main.component';
+import { Routes, RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+
+const appRoutes: Routes = [
+  { path: '' , component: MainComponent },
+  { path: 'register', component: RegisterComponent },
+];
+
+@NgModule({
+  declarations: [
+    LoginComponent,
+    AppComponent,
+    MainComponent,
+    RegisterComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
+    NgbModule,
+    RouterModule.forRoot(appRoutes,
+      { enableTracing: true }),
+  ],
+  providers: [],
+  entryComponents: [
+    LoginComponent,
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }

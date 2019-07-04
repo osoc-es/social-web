@@ -1,0 +1,27 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Inicia sesión para crear una consulta</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form #loginForm="ngForm" (ngSubmit)="login(loginForm.form)">
+    <div class="container">
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col">
+          <input type="text" class="form-control" name="mail" placeholder="Email" ngModel required>
+        </div>
+        <div class="col-2"></div>
+      </div><br>
+      <div class="row">
+      <div class="col-2"></div>
+        <div class="col">
+          <input type="text" class="form-control" name="password" placeholder="Contraseña" ngModel required>
+        </div>
+        <div class="col-2"></div>
+      </div><br>
+      <button class="btn btn-outline-primary btn-block" [disabled]="!loginForm.valid" type="submit">Conectarse</button><br>
+    </div>
+  </form>
+</div>
