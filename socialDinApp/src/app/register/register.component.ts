@@ -1,3 +1,4 @@
+import { AUTHService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,14 +10,16 @@ export class RegisterComponent implements OnInit {
 
   err = '';
 
-  constructor() { }
+  constructor(private auth: AUTHService) { }
 
   register(form) {
     if (form.value.password !== form.value.password2) {
       this.err = 'Las contraseñas no coinciden';
     } else {
       this.err = '';
-      // TODO: USAR SERVICIO PARA LLAMAR A LA API Y QUE SE GUARDEN LOS DATOS
+      this.auth.register(form.value).subscribe((token) => {
+        console.log(token);
+      });
     }
   }
 
