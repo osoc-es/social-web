@@ -1,1 +1,1 @@
-docker run -d --restart true --name social-web -v ${PWD}:/app -v /app/node_modules -p 5042:4200 osocspain/social-web:latest
+docker run -d --restart always --name social-web -v ${PWD}:/app -v /app/node_modules -p 5042:4200 osocspain/social-web:latest
