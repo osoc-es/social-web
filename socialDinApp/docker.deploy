@@ -1,0 +1,3 @@
+docker stop social-web
+docker rm social-web
+docker run -d -v ${PWD}:/app -v /app/node_modules -p 5042:4200 osocspain/social-web:latest
