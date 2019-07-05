@@ -22,4 +22,5 @@ COPY . /app
 
 # start app
 #CMD ng serve --host 0.0.0.0
-CMD ng build --prod --deploy-url=http://librairy.linkeddata.es/social-web
+#CMD ng build --prod --deploy-url=http://librairy.linkeddata.es/social-web
+CMD ng serve --host 0.0.0.0 --disable-host-check
