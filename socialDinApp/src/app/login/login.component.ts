@@ -27,8 +27,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(form) {
-    this.auth.login(form.value).subscribe(() => {
-    });
+    this.auth.login(form.value).subscribe(() => { });
   }
 
   onKeyDown(event) {
@@ -38,13 +37,19 @@ export class LoginComponent implements OnInit {
   }
 
   register(form) {
-    if (form.value.password !== form.value.password2) {
+    if (form.value.Password !== form.value.Password2) {
       this.err = 'Las contraseñas no coinciden';
     } else {
       this.err = '';
       this.auth.register(form.value).subscribe((token: string) => {
-        localStorage.setItem('TOKEN', token);
+        console.log(token);
+        // localStorage.setItem('TOKEN', token);
         localStorage.setItem('EMAIL', form.value.email);
+      }, (err) => {
+        if (err.status === 200) {
+          console.log('NO ERROR HERE');
+        }
+        console.log(err);
       });
     }
   }

@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AUTHService {
 
-  Adress = 'localhost:3000';
+  Adress = 'http://librairy.linkeddata.es/social-service';
 
   constructor(private http: HttpClient) { }
 
