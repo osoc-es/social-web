@@ -18,6 +18,13 @@ export class MainComponent implements OnInit {
     });
   }
 
+  about() {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: 'smooth'
+    });
+  }
+
   ngOnInit() {
   }
 

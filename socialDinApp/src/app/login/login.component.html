@@ -2,22 +2,21 @@
   <div class="container">
     <!-- BUTTON TO SELECT BETWEEN LOGIN AND REGISTER -->
     <div class="row">
-      <div class="col"></div>
-      <div class="col-auto offset-auto">
+      <div class="col">
         <div class="btn-group-toggle">
           <label class="btn btn-{{aux}}primary btn-block">
             <input type="radio" name="auth" id="login" checked autocomplete="off" (click)="loginClick()"> Conéctate
           </label>
         </div>
       </div>
-      <div class="col-auto">
+      <div class="col"></div>
+      <div class="col">
         <div class="btn-group-toggle" data-toggle="buttons">
           <label class="btn btn-{{aux2}}primary btn-block">
             <input type="radio" name="auth" id="login" autocomplete="off" (click)="registerClick()"> Regístrate
           </label>
         </div>
       </div>
-      <div class="col"></div>
     </div><br><br>
     <!-- LOGIN FORM -->
     <div *ngIf="aux === ''">
