@@ -80,10 +80,11 @@ export class LoginComponent implements OnInit {
       this.err = 'Las contraseñas no coinciden';
     } else {
       this.err = '';
-      this.auth.register(form.value).subscribe((token: string) => {
-        console.log(token);
+      this.auth.register(form.value).subscribe(() => {
+        console.log('entra');
         // localStorage.setItem('TOKEN', token);
-        localStorage.setItem('EMAIL', form.value.email);
+        localStorage.setItem('EMAIL', form.value.Email);
+        this.activeModal.close();
         this.router.navigateByUrl('home');
       }, (err) => {
         this.err = 'El email ya está registrado';

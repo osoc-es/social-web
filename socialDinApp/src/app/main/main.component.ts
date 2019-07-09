@@ -1,6 +1,7 @@
 import { LoginComponent } from './../login/login.component';
 import { Component, OnInit } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -10,12 +11,16 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class MainComponent implements OnInit {
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal) { }
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private router: Router) { }
 
   open() {
-    this.modalService.open(LoginComponent, {
-      centered: true
-    });
+    if (localStorage.getItem('EMAIL') === null) {
+      this.modalService.open(LoginComponent, {
+        centered: true
+      });
+    } else {
+      this.router.navigateByUrl('home');
+    }
   }
 
   about() {

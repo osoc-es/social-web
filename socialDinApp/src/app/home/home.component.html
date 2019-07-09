@@ -1,11 +1,42 @@
-<div>
-  <div class="container ">
-    <h1 *ngIf="user.Gender === 'Hombre'; else female"> Bienvenido, {{user.FirstName}} </h1>
-    <ng-template #female>
-      <h1 *ngIf="user.Gender === 'Mujer'; else other"> Bienvenida, {{user.FirstName}} </h1>
-    </ng-template>
-    <ng-template #other>
-      <h1> Hola, {{user.FirstName}} </h1>
-    </ng-template>
+<div *ngIf="hasLoaded">
+  <!-- BANNER -->
+  <div class="banner">
+    <div class="container h-100">
+      <div class="row h-100 justify-content-center align-items-center">
+        <h1 class="text-center text-white" *ngIf="user.Gender === 'Hombre'; else female"> Bienvenido, {{user.FirstName}} </h1>
+        <ng-template #female>
+          <h1 class="text-center text-white" *ngIf="user.Gender === 'Mujer'; else other"> Bienvenida, {{user.FirstName}} </h1>
+        </ng-template>
+        <ng-template #other>
+          <h1 class="text-center text-white" > Hola, {{user.FirstName}} </h1>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+  <!-- LIST OF FORMS -->
+  <div class="background"><br>
+    <h1 class="text-center"> Déjanos ayudarte </h1><br>
+    <div class="container">
+      <div class="row" *ngFor="let problem of problems">
+        <div class="card" style="width: 100%">
+          <div class="card-body">
+            <h5 class="card-title">{{problem.title}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Social Dinapp</h6>
+            <p class="card-text">{{problem.description}}</p>
+          </div>
+        </div>
+      </div> <br>
+    </div>
+  </div>
+  <!-- FOOTER -->
+  <div class="rand-parallax">
+    <div class="container h-100">
+      <div class="row h-100 justify-content-center align-items-center">
+        <button class="btn btn-lg btn-primary" (click)="logOut()">Cerrar sesión</button>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><br>
+    <p class="text-center"> Social Dinapp, C/ Santa Virgilia, 14.  2º A Madrid-28033, (+34) 616515443 </p>
   </div>
 </div>

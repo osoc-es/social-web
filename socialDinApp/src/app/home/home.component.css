@@ -1,0 +1,23 @@
+.banner {
+  background: url('../../assets/john-mark-kuznietsov-397655.jpg') ;
+  height: 50vh;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.background {
+  background: #dcdcdc;
+  height: 100%;
+}
+
+.rand-parallax {
+  background: url('https://picsum.photos/1200/?blur') ;
+  height: 50vh;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
