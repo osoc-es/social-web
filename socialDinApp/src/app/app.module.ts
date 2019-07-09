@@ -10,9 +10,12 @@ import { MainComponent } from './main/main.component';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+
 
 const appRoutes: Routes = [
   { path: '' , component: MainComponent },
+  { path: 'home', component: HomeComponent }
 ];
 
 @NgModule({
@@ -20,6 +23,7 @@ const appRoutes: Routes = [
     LoginComponent,
     AppComponent,
     MainComponent,
+    HomeComponent,
   ],
   imports: [
     AngularFontAwesomeModule,
@@ -27,8 +31,7 @@ const appRoutes: Routes = [
     FormsModule,
     AppRoutingModule,
     NgbModule,
-    RouterModule.forRoot(appRoutes,
-      { enableTracing: true }),
+    RouterModule.forRoot(appRoutes),
     HttpClientModule,
   ],
   providers: [],

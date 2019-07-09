@@ -24,17 +24,30 @@
         <div class="row">
           <div class="col-3"></div>
           <div class="col">
-            <input type="text" class="form-control" name="Email" placeholder="Email" ngModel required>
+            <input type="text" class="form-control" name="Email" placeholder="Email" ngModel required email>
           </div>
           <div class="col-3"></div>
         </div><br>
         <div class="row">
         <div class="col-3"></div>
           <div class="col">
-            <input type="password" class="form-control" name="Password" placeholder="Contraseña" ngModel required>
+            <div class="input-group mb3">
+              <input type="{{visible3}}" class="form-control" name="Password" placeholder="Contraseña" ngModel required>
+              <div class="input-group-append">
+                <button *ngIf="visible3 === 'password'" class="btn btn-outline-secondary" (click)="show3()" type="button">
+                  <fa name="eye"></fa>
+                </button>
+                <button *ngIf="visible3 === 'text'" class="btn btn-outline-secondary" (click)="hide3()" type="button">
+                  <fa name="eye-slash"></fa>
+                </button>
+              </div>
+            </div>
           </div>
           <div class="col-3"></div>
         </div><br>
+          <div *ngIf="err" class="alert alert-warning" role="alert">
+            {{ err }}
+          </div>
         <div class="row">
           <div class="col"></div>
             <div class="col"><button class="btn btn-primary btn-block" [disabled]="!loginForm.valid" type="submit">Conectarse</button><br></div>
@@ -63,26 +76,54 @@
           </div><br>
           <div class="form-group">
             <label for="email">Correo electrónico</label>
-            <input type="email" class="form-control" placeholder="Email" name="Email" ngModel required>
+            <input type="email" class="form-control" placeholder="Email" name="Email" ngModel required email>
           </div>
           <div class="form-group">
             <div class="row">
-              <div class="col-8">
+              <div class="col">
                 <label for="password">Contraseña</label>
-                <input type="password" class="form-control" placeholder="Contraseña" name="Password" ngModel required>
+                <div class="input-group mb-3">
+                  <input id="con" type="{{visible}}" class="form-control" placeholder="Contraseña" name="Password" ngModel #con="ngModel" required minlength="6">
+                  <div class="input-group-append">
+                    <button *ngIf="visible === 'password'" class="btn btn-outline-secondary" type="button" id="button-addon" (click)="show()">
+                      <fa name="eye"></fa>
+                    </button>
+                    <button *ngIf="visible === 'text'" class="btn btn-outline-secondary" type="button" id="button-addon-else" (click)="hide()">
+                      <fa name="eye-slash"></fa>
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
           <div class="form-group">
             <div class="row">
-              <div class="col-8">
-                <input type="password" class="form-control" id="password2" placeholder="Repetir contraseña" name="Password2" ngModel required>
+              <div class="col">
+                <div class="input-group mb-3">
+                  <input type="{{visible2}}" class="form-control" id="password2" placeholder="Repetir contraseña" name="Password2" ngModel required>
+                  <div class="input-group-append">
+                    <button *ngIf="visible2 === 'password'" class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="show2()">
+                      <fa name="eye"></fa>
+                    </button>
+                    <button *ngIf="visible2 === 'text'" class="btn btn-outline-secondary" type="button" id="button-addon-else2" (click)="hide2()">
+                      <fa name="eye-slash"></fa>
+                    </button>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
+          <div *ngIf="con.invalid && (con.dirty || con.touched)" class="alert alert-warning" role="alert">
+            <div *ngIf="con.value === ''; else invalid">
+              La contraseña no puede estar vacía
+            </div>
+            <ng-template #invalid>
+              La contraseña debe tener al menos 6 caracteres.
+            </ng-template>
           </div>
           <div class="row">
             <div class="col">
-              <label for="phone">Teléfono (Opcional) </label>
+              <label for="phone" class="text-truncate">Teléfono (Opcional) </label>
               <input type="text" class="form-control" placeholder="" name="ContactNumber" ngModel>
             </div>
             <div class="col">
@@ -90,9 +131,9 @@
                     <label for="sel1">Género:</label>
                     <select class="form-control" id="sel1" name="Gender" ngModel required>
                       <option>  </option>
-                      <option>Hombre </option>
-                      <option>Mujer </option>
-                      <option>Prefiero no contestar </option>
+                      <option>Hombre</option>
+                      <option>Mujer</option>
+                      <option>Prefiero no contestar</option>
                     </select>
                   </div>
             </div>
