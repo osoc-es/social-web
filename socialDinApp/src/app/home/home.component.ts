@@ -40,4 +40,8 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  loadForm(id) {
+    localStorage.setItem('FORM', id);
+    this.router.navigateByUrl('forms');
+  }
 }
