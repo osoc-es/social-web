@@ -16,6 +16,11 @@ export class QuestionListComponent implements OnInit {
 
   ngOnInit() {
     this.loadQuestions();
+    this.hasLoaded = true;
+  }
+
+  submit(answers) {
+    console.log(answers);
   }
 
   loadQuestions() {
@@ -25,6 +30,7 @@ export class QuestionListComponent implements OnInit {
       ConflictId: number,
       description: string,
     }]) => {
+      console.log(data);
       this.dinapp.getQuestions(data[0].FormId).subscribe((questions: [Questions]) => {
         this.questions = questions;
         console.log(questions);

@@ -1,7 +1,7 @@
 export interface Questions {
   QuestionId: number;
   FormId: number;
-  QuestionType: string;
+  QustionType: string;
   Question: string;
   description: string;
   isMandatory: boolean;
