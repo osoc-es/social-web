@@ -23,14 +23,14 @@
 					<!-- QUESTION TYPE 1 STANDS FOR MULTIPLE CHOICE ANSWER WITH CHECKBOXES -->
 					<div class="form-check" *ngIf="question.QustionType === '1'">
 						<div *ngFor="let option of question.Options; index as j">
-							<input class="form-check-input" type="checkbox" name="answer-{{i}}-{{j}}" ngModel required>
+							<input class="form-check-input" type="checkbox" name="answer-{{i}}-{{j}}" [ngModel]="test">
 							<label class="form-check-label" for="answer-{{i}}-{{j}}">{{option.OptionDescription}}</label>
 						</div>
 					</div>
 					<!-- QUESTION TYPE 2 STANDS FOR MULTIPLE CHOICE ANSWER WITH RADIO BUTTONS -->
 					<div class="form-check" *ngIf="question.QustionType === '2' || question.QustionType === '3'" >
 						<div *ngFor="let option of question.Options; index as j">
-							<input class="form-check-input" type="radio" id="answer-{{i}}-{{j}}" name="anwser-{{i}}" value="option-{{j}}" ngModel required>
+							<input class="form-check-input" type="radio" id="answer-{{i}}-{{j}}" name="anwser-{{i}}" value="{{option.OptionDescription}}" ngModel required>
 							<label class="form-check-label" for="answer-{{i}}">{{option.OptionDescription}}</label>
 						</div>
 					</div>
@@ -39,12 +39,13 @@
 					<div *ngIf="question.QustionType === '4'">
 						<div *ngFor="let option of question.Options; index as j">
 							<label for="answer{{i}}-{{j}}">{{option.OptionDescription}}</label>
-							<input class="custom-range" type="range" min="0" max="8" name="answer-{{i}}-{{j}}" ngModel required>
+							<input class="custom-range" type="range" min="0" max="8" name="answer-{{i}}-{{j}}" ngModel="4" required>
 						</div>
 					</div>
 				</div>
 			</div><br>
 		</div>
+		<button class="btn btn-outline-primary btn-block" [disabled]="!answers.valid" type="submit">Enviar las respuestas</button><br>
 	</form>
  </div>
 </div>

@@ -12,6 +12,7 @@ export class QuestionListComponent implements OnInit {
   constructor(private dinapp: FormService, ) { }
 
   hasLoaded = false;
+  test = false;
   questions: [Questions];
 
   ngOnInit() {
@@ -20,7 +21,7 @@ export class QuestionListComponent implements OnInit {
   }
 
   submit(answers) {
-    console.log(answers);
+    console.log(answers.value);
   }
 
   loadQuestions() {
