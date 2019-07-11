@@ -51,7 +51,9 @@ export class QuestionListComponent implements OnInit {
       }) as Answer;
       array.push(ans);
     }
-    console.log(array);
+    this.dinapp.postAnswers(array).subscribe(() => {
+      console.log('everything ok');
+    });
   }
 
   loadQuestions() {
