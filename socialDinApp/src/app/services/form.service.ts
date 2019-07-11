@@ -22,8 +22,10 @@ export class FormService {
     return this.http.get(`${this.adress}questions/${id}`);
   } // id represents the form id
 
-  postAnswers(data) {
-    return this.http.post(`${this.adress}answers/submit`, data);
+  postAnswers(array) {
+    return this.http.post(`${this.adress}answers/submit`, {
+      data: array
+    });
   }
 
 }
