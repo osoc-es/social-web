@@ -19,8 +19,7 @@ export class AUTHService {
     return this.http.post(`${this.Adress}/users/login`, data);
   }
 
-  profile() {
-    const email = localStorage.getItem('EMAIL');
+  profile(email) {
     return this.http.get(`${this.Adress}/users/profile/${email}`);
   }
 }

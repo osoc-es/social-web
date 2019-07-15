@@ -56,7 +56,10 @@
       </form>
       <div class="container">
         <div class="row">
-          <div class="col" style="text-align: center"><a href="#">He olvidado mi contraseña.</a></div>
+          <p class="col" style="text-align: center"><a href="#">He olvidado mi contraseña.</a></p>
+        </div>
+        <div class="row" *ngIf="canBeGuest()">
+          <p class="col" style="text-align: center"><span class="btn btn-link" (click)="guest()">Acceder como invitado.</span></p>
         </div><br>
       </div>
     </div>

@@ -31,13 +31,19 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.auth.profile().subscribe((data: User) => {
-      this.user = data;
+    const email = localStorage.getItem('EMAIL');
+    if (email !== 'GUEST') {
+      this.auth.profile(email).subscribe((data: User) => {
+        this.user = data;
+        this.loadData();
+        this.hasLoaded = true;
+      }, (err) => {
+        this.router.navigateByUrl('');
+      });
+    } else {
       this.loadData();
       this.hasLoaded = true;
-    }, (err) => {
-      this.router.navigateByUrl('');
-    });
+    }
   }
 
   loadForm(id) {

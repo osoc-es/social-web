@@ -22,6 +22,10 @@ export class LoginComponent implements OnInit {
 
   visible3 = 'password';
 
+  canBeGuest() {
+    return localStorage.getItem('EMAIL') === 'GUEST' ? false : true;
+  }
+
   show() {
     this.visible = 'text';
   }
@@ -61,12 +65,23 @@ export class LoginComponent implements OnInit {
   login(form) {
     this.auth.login(form.value).subscribe(() => {
       // localStorage.setItem('TOKEN', token);
-      localStorage.setItem('EMAIL', form.value.Email);
-      this.activeModal.close();
-      this.router.navigateByUrl('home');
+      if (localStorage.getItem('EMAIL') !== 'GUEST') {
+        localStorage.setItem('EMAIL', form.value.Email);
+        this.activeModal.close();
+        this.router.navigateByUrl('home');
+      } else {
+        localStorage.setItem('EMAIL', form.value.Email);
+        this.activeModal.close();
+      }
     }, (err) => {
       this.err = 'Usuario o contraseña incorrecta';
     });
+  }
+
+  guest() {
+   localStorage.setItem('EMAIL', 'GUEST');
+   this.activeModal.close();
+   this.router.navigateByUrl('home');
   }
 
   onKeyDown(event) {
@@ -81,11 +96,14 @@ export class LoginComponent implements OnInit {
     } else {
       this.err = '';
       this.auth.register(form.value).subscribe(() => {
-        console.log('entra');
-        // localStorage.setItem('TOKEN', token);
-        localStorage.setItem('EMAIL', form.value.Email);
-        this.activeModal.close();
-        this.router.navigateByUrl('home');
+        if (localStorage.getItem('EMAIL') !== 'GUEST') {
+          localStorage.setItem('EMAIL', form.value.Email);
+          this.activeModal.close();
+          this.router.navigateByUrl('home');
+        } else {
+          localStorage.setItem('EMAIL', form.value.Email);
+          this.activeModal.close();
+        }
       }, (err) => {
         this.err = 'El email ya está registrado';
       });

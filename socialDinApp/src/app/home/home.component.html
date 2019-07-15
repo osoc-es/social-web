@@ -3,13 +3,15 @@
   <div class="banner">
     <div class="container h-100">
       <div class="row h-100 justify-content-center align-items-center">
-        <h1 class="text-center text-white" *ngIf="user.Gender === 'Hombre'; else female"> Bienvenido, {{user.FirstName}} </h1>
-        <ng-template #female>
-          <h1 class="text-center text-white" *ngIf="user.Gender === 'Mujer'; else other"> Bienvenida, {{user.FirstName}} </h1>
-        </ng-template>
-        <ng-template #other>
-          <h1 class="text-center text-white" > Hola, {{user.FirstName}} </h1>
-        </ng-template>
+        <div *ngIf="user">
+          <h1 class="text-center text-white" *ngIf="user.Gender === 'Hombre'; else female"> Bienvenido, {{user.FirstName}} </h1>
+          <ng-template #female>
+            <h1 class="text-center text-white" *ngIf="user.Gender === 'Mujer'; else other"> Bienvenida, {{user.FirstName}} </h1>
+          </ng-template>
+          <ng-template #other>
+            <h1 class="text-center text-white" > Hola, {{user.FirstName}} </h1>
+          </ng-template>
+        </div>
       </div>
     </div>
   </div>
