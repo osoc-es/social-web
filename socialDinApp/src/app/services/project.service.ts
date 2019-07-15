@@ -13,4 +13,8 @@ export class ProjectService {
   getProjects(id) {
     return this.http.get(`${this.Adress}projects/${id}`);
   }
+
+  getConflicts(projectId) {
+    return this.http.get(`${this.Adress}conflicts/${projectId}`);
+  }
 }

@@ -1,3 +1,4 @@
+import { Problem } from './../interfaces/problem';
 import { Project } from './../interfaces/project';
 import { ProjectService } from './../services/project.service';
 import { User } from './../interfaces/user';
@@ -14,14 +15,26 @@ export class AdminComponent implements OnInit {
 
   hasLoaded = false;
 
-  projects: Project;
+  projects: [Project];
+
+  conflicts: Problem[] = [];
 
   constructor(private auth: AUTHService, private router: Router, private project: ProjectService) { }
 
-  loadData() {
-    this.project.getProjects(1).subscribe((data: Project) => {
+  loadProjects() {
+    this.project.getProjects(1).subscribe((data: [Project]) => {
       this.projects = data;
-      console.log(data);
+      for (const [index, element] of data.entries()) {
+        this.loadConflicts(element.ProjectId);
+      }
+    });
+  }
+
+  loadConflicts(i) {
+    this.project.getConflicts(i).subscribe((data: [Problem]) => {
+      data.forEach((test) => {
+        this.conflicts.push(test);
+      });
     });
   }
 
@@ -41,7 +54,7 @@ export class AdminComponent implements OnInit {
 
   ngOnInit() {
     this.getUser();
-    this.loadData();
+    this.loadProjects();
     this.hasLoaded = true;
   }
 

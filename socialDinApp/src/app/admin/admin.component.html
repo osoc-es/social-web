@@ -1,4 +1,19 @@
 <div *ngIf="hasLoaded">
   <h1 class="text-center"> Panel de administración </h1>
-  <h2 class="text-center"> Árbol de Proyectos </h2>
+  <h2 class="text-center"> Árbol de Proyectos: </h2><br>
+  <div class="container">
+    <ul>
+      <li *ngFor="let project of projects; index as i">
+        <h4 style="display: inline"> {{project.name}}: </h4>
+        <span>{{project.Description}}</span>
+        <ul>
+          <div *ngFor="let conflict of conflicts; index as j">
+            <li *ngIf="conflict.ProjectId === project.ProjectId">
+              {{conflict.title}}
+            </li>
+          </div>
+        </ul>
+      </li>
+    </ul>
+  </div>
 </div>
