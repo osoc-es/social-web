@@ -12,12 +12,14 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { QuestionListComponent } from './question-list/question-list.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 const appRoutes: Routes = [
   { path: '' , component: MainComponent },
   { path: 'home', component: HomeComponent },
   { path: 'forms', component: QuestionListComponent },
+  { path: 'admin', component: AdminComponent }
 ];
 
 @NgModule({
@@ -27,6 +29,7 @@ const appRoutes: Routes = [
     MainComponent,
     HomeComponent,
     QuestionListComponent,
+    AdminComponent,
   ],
   imports: [
     AngularFontAwesomeModule,

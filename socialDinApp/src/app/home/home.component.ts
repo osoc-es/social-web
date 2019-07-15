@@ -2,8 +2,8 @@ import { Router } from '@angular/router';
 import { Conflict } from './../interfaces/conflict';
 import { AUTHService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { User } from '../interfaces/user';
 import { FormService } from '../services/form.service';
+import { User } from '../interfaces/user';
 
 @Component({
   selector: 'app-home',
@@ -15,9 +15,16 @@ export class HomeComponent implements OnInit {
   constructor(private auth: AUTHService, private dinapp: FormService, private router: Router) { }
 
   user: User;
+
+  isGuest: boolean;
+
   hasLoaded = false;
 
   problems: [Conflict];
+
+  toAdmin() {
+    this.router.navigateByUrl('admin');
+  }
 
   loadData() {
     this.dinapp.getConflicts().subscribe((data: [Conflict]) => {
@@ -33,6 +40,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     const email = localStorage.getItem('EMAIL');
     if (email !== 'GUEST') {
+      this.isGuest = false;
       this.auth.profile(email).subscribe((data: User) => {
         this.user = data;
         this.loadData();
@@ -41,6 +49,7 @@ export class HomeComponent implements OnInit {
         this.router.navigateByUrl('');
       });
     } else {
+      this.isGuest = true;
       this.loadData();
       this.hasLoaded = true;
     }

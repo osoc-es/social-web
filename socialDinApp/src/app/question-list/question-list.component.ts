@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { Questions } from '../interfaces/questions';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from '../login/login.component';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-question-list',
@@ -19,6 +20,11 @@ export class QuestionListComponent implements OnInit {
   def = false;
   questions: [Questions];
   email: string;
+  error = '';
+
+  close() {
+    this.error = '';
+  }
 
   ngOnInit() {
     this.email = localStorage.getItem('EMAIL');
@@ -55,7 +61,13 @@ export class QuestionListComponent implements OnInit {
         array.push(ans);
       }
       this.dinapp.postAnswers(array).subscribe((data) => {
-        console.log(data);
+        this.router.navigateByUrl('home');
+      }, (error: HttpErrorResponse) => {
+        if (error.status === 409) {
+          this.error = 'Ya has realizado este formulario';
+        } else {
+          this.error = error.message;
+        }
       });
     } else {
       this.modal.open(LoginComponent);
@@ -74,7 +86,6 @@ export class QuestionListComponent implements OnInit {
       }]) => {
         this.dinapp.getQuestions(data[0].FormId).subscribe((questions: [Questions]) => {
           this.questions = questions;
-          console.log(questions);
         }, () => {
           this.router.navigateByUrl('');
         });

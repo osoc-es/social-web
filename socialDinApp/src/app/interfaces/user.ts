@@ -5,4 +5,7 @@ export interface User {
   LastName: string;
   ContactNumber: string;
   Gender: string;
+  UserType: string;
+  DOB: string;
+  title: string;
 }

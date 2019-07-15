@@ -48,7 +48,7 @@
 				</div>
 			</div><br>
     </div>
+    <ngb-toast style="width: 100%" *ngIf="error" header="Error" [autohide]="false" (hide)="close()"> {{error}} </ngb-toast>
     <button class="btn btn-outline-primary btn-block" [disabled]="!answers.valid" type="submit">Enviar las respuestas</button><br>
-	</form>
- </div>
+  </form>
 </div>

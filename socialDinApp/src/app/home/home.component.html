@@ -30,6 +30,9 @@
       </div> <br>
     </div>
   </div>
+  <div *ngIf="!isGuest && user.title === 'admin'">
+    <button type="button" class="btn btn-primary btn-block" (click)="toAdmin()">Panel de administrador</button>
+  </div>
   <!-- FOOTER -->
   <div class="rand-parallax">
     <div class="container h-100">
