@@ -5,6 +5,8 @@ import { User } from './../interfaces/user';
 import { AUTHService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CreateProjectComponent } from './create-project/create-project.component';
 
 @Component({
   selector: 'app-admin',
@@ -19,9 +21,9 @@ export class AdminComponent implements OnInit {
 
   conflicts: Problem[] = [];
 
-  constructor(private auth: AUTHService, private router: Router, private project: ProjectService) { }
+  constructor(private auth: AUTHService, private router: Router, private project: ProjectService, private modal: NgbModal) { }
 
-  loadProjects() {
+  loadTree() {
     this.project.getProjects(1).subscribe((data: [Project]) => {
       this.projects = data;
       for (const [index, element] of data.entries()) {
@@ -54,8 +56,12 @@ export class AdminComponent implements OnInit {
 
   ngOnInit() {
     this.getUser();
-    this.loadProjects();
+    this.loadTree();
     this.hasLoaded = true;
+  }
+
+  createProject() {
+    this.modal.open(CreateProjectComponent);
   }
 
 }

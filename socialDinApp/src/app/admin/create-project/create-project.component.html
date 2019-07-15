@@ -1,0 +1,12 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Herramienta de creación de proyectos</h4>
+</div>
+<form #projectCreation="ngForm" (ngSubmit)="submit(projectCreation.form)">
+  <div class="modal-body">
+    <input type="text" name="name" class="form-control" placeholder="Nombre" ngModel required><br>
+    <textarea name="Description" class="form-control" placeholder="Descripción" ngModel required></textarea>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary btn-block" [disabled]="!projectCreation.valid" type="submit">Crear proyecto</button>
+  </div>
+</form>

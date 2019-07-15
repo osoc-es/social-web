@@ -13,6 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { QuestionListComponent } from './question-list/question-list.component';
 import { AdminComponent } from './admin/admin.component';
+import { CreateProjectComponent } from './admin/create-project/create-project.component';
 
 
 const appRoutes: Routes = [
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
     HomeComponent,
     QuestionListComponent,
     AdminComponent,
+    CreateProjectComponent,
   ],
   imports: [
     AngularFontAwesomeModule,
@@ -43,6 +45,7 @@ const appRoutes: Routes = [
   providers: [],
   entryComponents: [
     LoginComponent,
+    CreateProjectComponent,
   ],
   bootstrap: [AppComponent]
 })
