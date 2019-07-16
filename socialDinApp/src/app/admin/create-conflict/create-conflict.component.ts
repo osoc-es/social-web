@@ -30,9 +30,16 @@ export class CreateConflictComponent implements OnInit {
     const id = this.projects.find((element) => {
       return element.name === form.value.conflicts;
     }).ProjectId;
-    this.p.createConflict(body, id).subscribe(() => {
-      console.log('project created succesfully');
-      this.modal.close();
+    this.p.createConflict(body, id).subscribe((data: {
+      ConflictId: number
+    }) => {
+      const formbody = {
+        description: form.value.fdescription
+      };
+      this.p.createForm(formbody, data.ConflictId).subscribe(() => {
+        console.log('form created succesfully');
+        this.modal.close();
+      });
     });
   }
 

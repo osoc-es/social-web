@@ -10,9 +10,10 @@
     </select><br>
     <h5 class="text-center">Nombre del conflicto</h5>
     <input name="title" class="form-control" placeholder="Nombre del conflicto" ngModel required><br>
-    <textarea name="description" class="form-control" placeholder="Descripción del conflicto" ngModel required></textarea>
+    <textarea name="description" class="form-control" placeholder="Descripción del conflicto" ngModel required></textarea><br>
+    <textarea name="fdescription" class="form-control" placeholder="Descripción del formulario asociado al conflicto" ngModel required></textarea>
   </div>
   <div class="modal-footer">
-    <button class="btn btn-primary btn-block" [disabled]="!projectCreation.valid" type="submit">Crear proyecto</button>
+    <button class="btn btn-primary btn-block" [disabled]="!projectCreation.valid" type="submit">Crear conflicto</button>
   </div>
 </form>

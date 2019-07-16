@@ -25,4 +25,8 @@ export class ProjectService {
   createConflict(body, projectId) {
     return this.http.post(`${this.Adress}conflicts/add/${projectId}`, body);
   }
+
+  createForm(body, conflictId) {
+    return this.http.post(`${this.Adress}forms/add/${conflictId}`, body);
+  }
 }
