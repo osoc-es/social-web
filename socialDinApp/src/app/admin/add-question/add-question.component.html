@@ -1,0 +1,90 @@
+<div *ngIf="hasLoaded">
+  <div *ngIf="page === 1">
+    <form #addQuestion="ngForm" (ngSubmit)="storeData(addQuestion.form)">
+      <div class="modal-header">
+        <h4>Herramienta de creación de preguntas.</h4>
+      </div>
+      <div class="modal-body">
+        <h5 class="text-center">Datos de la pregunta</h5>
+        <input placeholder="Título de la pregunta" type="text" class="form-control" name="Question" ngModel required><br>
+        <textarea placeholder="Descripción para la pregunta" class="form-control" name="description" ngModel required></textarea>
+        <label for="isMandatory">¿Es obligatoria?</label>
+        <select class="form-control" name="isMandatory" ngModel required>
+          <option>Sí</option>
+          <option>No</option>
+        </select><br>
+        <label for="QustionType">Tipo de pregunta</label>
+        <select class="form-control" name="QustionType" ngModel required>
+          <option>Texto abierto</option>
+          <option>Elección múltiple</option>
+          <option>Elección unitaria</option>
+          <option>Elección booleana (sí/no)</option>
+          <option>Pregunta de rango</option>
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button [disabled]="!addQuestion.valid" type="submit" class="btn btn-primary btn-block">Siguiente</button>
+      </div>
+    </form>
+  </div>
+  <div *ngIf="page === 2">
+    <div class="modal-header">
+      <h4>Manejo de opciones</h4>
+    </div>
+    <form #Options="ngForm" (ngSubmit)="submit2(Options.form)">
+      <div class="modal-body">
+        <div *ngIf="question.QustionType === '1'">
+          <h5 class="text-center"> Tipo de pregunta: elección múltiple. </h5>
+          <p class="text-center"> ¿Cuántas opciones quieres poner? (mínimo 1, máximo 12)</p>
+          <input class="form-control" type="number" min="1" max="12" name="amount" ngModel required>
+        </div>
+        <div *ngIf="question.QustionType === '2'">
+          <h5 class="text-center"> Tipo de pregunta: elección única. </h5>
+          <p class="text-center"> ¿Cuántas opciones quieres poner? (mínimo 1, máximo 12)</p>
+          <input class="form-control" type="number" min="1" max="12" name="amount" ngModel required>
+        </div>
+        <div *ngIf="question.QustionType === '4'">
+          <h5 class="text-center"> Tipo de pregunta: elección de rango. </h5>
+          <p class="text-center"> ¿Cuántas opciones quieres poner? (mínimo 1, máximo 8) (Cada opción representa un valor, más o menos fuerte)</p>
+          <input class="form-control" type="number" min="1" max="8" name="amount" ngModel required>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <button class="btn btn-outline-primary btn-block" (click)="back()">Atrás</button>
+            </div>
+            <div class="col">
+                <button type="submit" [disabled]="!Options.valid" class="btn btn-primary btn-block">Siguiente</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div *ngIf="page === 3">
+    <div class="modal-header">
+      <h5>Introduce la descripción de las opciones</h5>
+    </div>
+    <form #lastForm="ngForm" (ngSubmit)="createQuestion(lastForm.form)">
+      <div class="modal-body">
+        <div *ngFor="let repeat of [].constructor(amount); index as i">
+          <textarea name="{{i}}" placeholder="Descripción de la opción {{i+1}}" class="form-control" ngModel required></textarea><br>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <button class="btn btn-outline-primary btn-block" (click)="back()">Atrás</button>
+            </div>
+            <div class="col">
+              <button type="submit" [disabled]="lastForm.invalid" class="btn btn-primary btn-block">Crear pregunta</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

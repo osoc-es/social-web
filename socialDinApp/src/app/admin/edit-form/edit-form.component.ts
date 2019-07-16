@@ -5,6 +5,8 @@ import { ProjectService } from './../../services/project.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Questions } from 'src/app/interfaces/questions';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AddQuestionComponent } from '../add-question/add-question.component';
 
 @Component({
   selector: 'app-edit-form',
@@ -21,7 +23,7 @@ export class EditFormComponent implements OnInit {
 
   questions: Questions[] = [];
 
-  constructor(private p: ProjectService, private auth: AUTHService, private router: Router) { }
+  constructor(private p: ProjectService, private auth: AUTHService, private router: Router, private modal: NgbModal) { }
 
   isAdmin() {
     this.auth.profile(localStorage.getItem('EMAIL')).subscribe((profile: User) => {
@@ -43,7 +45,6 @@ export class EditFormComponent implements OnInit {
         questions.forEach((question) => this.questions.push(question));
       });
     }
-    console.log(this.questions);
   }
 
   ngOnInit() {
@@ -53,6 +54,21 @@ export class EditFormComponent implements OnInit {
       this.forms = data;
       this.getQuestions();
       this.hasLoaded = true;
+    });
+  }
+
+  addQuestion(form) {
+    localStorage.setItem('FORM_ID', form.FormId);
+    const modal = this.modal.open(AddQuestionComponent);
+    modal.result.then(() => {
+      this.forms = [];
+      this.questions = [];
+      this.ngOnInit();
+     },
+    () => {
+      this.forms = [];
+      this.questions = [];
+      this.ngOnInit();
     });
   }
 

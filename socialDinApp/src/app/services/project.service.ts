@@ -37,4 +37,8 @@ export class ProjectService {
   getQuestions(formId) {
     return this.http.get(`${this.Adress}questions/${formId}`);
   }
+
+  addQuestion(body, formId) {
+    return this.http.post(`${this.Adress}questions/add/${formId}`, body);
+  }
 }

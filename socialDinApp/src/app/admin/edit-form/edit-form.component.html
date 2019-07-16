@@ -7,15 +7,15 @@
         <div class="card" *ngIf="question.FormId === form.FormId" style="width: 100%">
           <div class="card-body">
             <div class="card-title">
+              <span style="color: red" *ngIf="question.isMandatory === 1">*</span>
               <h5 class="text-center"> {{question.Question}} </h5>
             </div>
-            <h6>Descripción:</h6>{{question.description}}
-            <h6>Tipo de pregunta:</h6>
-            <span *ngIf="question.QustionType === '0'"> Texto abierto </span>
-            <span *ngIf="question.QustionType === '1'"> Elección multiple </span>
-            <span *ngIf="question.QustionType === '2'"> Elección unitaria </span>
-            <span *ngIf="question.QustionType === '3'"> Elección booleana (sí/no) </span>
-            <span *ngIf="question.QustionType === '4'"> Pregunta de rango </span>
+            <p class="text-center">{{question.description}}</p>
+            <p class="text-center" *ngIf="question.QustionType === '0'"> Texto abierto </p>
+            <p class="text-center" *ngIf="question.QustionType === '1'"> Elección multiple </p>
+            <p class="text-center" *ngIf="question.QustionType === '2'"> Elección unitaria </p>
+            <p class="text-center" *ngIf="question.QustionType === '3'"> Elección booleana (sí/no) </p>
+            <p class="text-center" *ngIf="question.QustionType === '4'"> Pregunta de rango </p>
             <h5 class="text-center">Opciones asociadas: </h5>
             <ul *ngFor="let option of question.Options">
               <li>{{option.OptionDescription}}</li>
@@ -24,7 +24,7 @@
         </div><br>
       </div>
       <!-- ADD MORE QUESTIONS -->
-      <button type="button" class="btn btn-primary btn-block" (click)="addQuestion()">Añadir pregunta</button>
+      <button type="button" class="btn btn-primary btn-block" (click)="addQuestion(form)">Añadir pregunta</button>
     </div>
   </div>
 </div>

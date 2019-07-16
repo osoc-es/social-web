@@ -16,6 +16,7 @@ import { AdminComponent } from './admin/admin.component';
 import { CreateProjectComponent } from './admin/create-project/create-project.component';
 import { CreateConflictComponent } from './admin/create-conflict/create-conflict.component';
 import { EditFormComponent } from './admin/edit-form/edit-form.component';
+import { AddQuestionComponent } from './admin/add-question/add-question.component';
 
 
 const appRoutes: Routes = [
@@ -37,6 +38,7 @@ const appRoutes: Routes = [
     CreateProjectComponent,
     CreateConflictComponent,
     EditFormComponent,
+    AddQuestionComponent,
   ],
   imports: [
     AngularFontAwesomeModule,
@@ -51,7 +53,8 @@ const appRoutes: Routes = [
   entryComponents: [
     LoginComponent,
     CreateProjectComponent,
-    CreateConflictComponent
+    CreateConflictComponent,
+    AddQuestionComponent,
   ],
   bootstrap: [AppComponent]
 })

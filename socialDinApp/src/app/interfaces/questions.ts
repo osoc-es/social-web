@@ -4,7 +4,7 @@ export interface Questions {
   QustionType: string;
   Question: string;
   description: string;
-  isMandatory: boolean;
+  isMandatory;
   Options: [{
     OptionId: number;
     QuestionId: number;
