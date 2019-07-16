@@ -1,5 +1,6 @@
 import { ProjectService } from './../../services/project.service';
 import { Component, OnInit } from '@angular/core';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-create-project',
@@ -8,12 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateProjectComponent implements OnInit {
 
-  constructor(private project: ProjectService) { }
+  constructor(private project: ProjectService, private modal: NgbActiveModal) { }
 
   submit(form) {
     console.log(form.value);
     this.project.createProject(form.value, 1).subscribe(() => {
-      console.log('project created succesfully');
+      console.log('project created successfully');
+      this.modal.close();
     });
   }
 

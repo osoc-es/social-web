@@ -29,4 +29,12 @@ export class ProjectService {
   createForm(body, conflictId) {
     return this.http.post(`${this.Adress}forms/add/${conflictId}`, body);
   }
+
+  getForms(conflictId) {
+    return this.http.get(`${this.Adress}forms/${conflictId}`);
+  }
+
+  getQuestions(formId) {
+    return this.http.get(`${this.Adress}questions/${formId}`);
+  }
 }

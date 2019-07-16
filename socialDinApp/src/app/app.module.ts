@@ -15,13 +15,15 @@ import { QuestionListComponent } from './question-list/question-list.component';
 import { AdminComponent } from './admin/admin.component';
 import { CreateProjectComponent } from './admin/create-project/create-project.component';
 import { CreateConflictComponent } from './admin/create-conflict/create-conflict.component';
+import { EditFormComponent } from './admin/edit-form/edit-form.component';
 
 
 const appRoutes: Routes = [
   { path: '' , component: MainComponent },
   { path: 'home', component: HomeComponent },
   { path: 'forms', component: QuestionListComponent },
-  { path: 'admin', component: AdminComponent }
+  { path: 'admin', component: AdminComponent },
+  { path: 'admin/form', component: EditFormComponent },
 ];
 
 @NgModule({
@@ -34,6 +36,7 @@ const appRoutes: Routes = [
     AdminComponent,
     CreateProjectComponent,
     CreateConflictComponent,
+    EditFormComponent,
   ],
   imports: [
     AngularFontAwesomeModule,

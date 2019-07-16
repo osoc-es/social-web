@@ -1,0 +1,30 @@
+<div *ngIf="hasLoaded">
+  <div class="container">
+    <div *ngFor="let form of forms; index as i">
+      <!-- DISPLAY OF THE CURRENT QUESTIONS -->
+      <h1 class="text-center"> {{form.description}} </h1>
+      <div *ngFor="let question of questions; index as j">
+        <div class="card" *ngIf="question.FormId === form.FormId" style="width: 100%">
+          <div class="card-body">
+            <div class="card-title">
+              <h5 class="text-center"> {{question.Question}} </h5>
+            </div>
+            <h6>Descripción:</h6>{{question.description}}
+            <h6>Tipo de pregunta:</h6>
+            <span *ngIf="question.QustionType === '0'"> Texto abierto </span>
+            <span *ngIf="question.QustionType === '1'"> Elección multiple </span>
+            <span *ngIf="question.QustionType === '2'"> Elección unitaria </span>
+            <span *ngIf="question.QustionType === '3'"> Elección booleana (sí/no) </span>
+            <span *ngIf="question.QustionType === '4'"> Pregunta de rango </span>
+            <h5 class="text-center">Opciones asociadas: </h5>
+            <ul *ngFor="let option of question.Options">
+              <li>{{option.OptionDescription}}</li>
+            </ul>
+          </div>
+        </div><br>
+      </div>
+      <!-- ADD MORE QUESTIONS -->
+      <button type="button" class="btn btn-primary btn-block" (click)="addQuestion()">Añadir pregunta</button>
+    </div>
+  </div>
+</div>

@@ -30,6 +30,7 @@ export class AdminComponent implements OnInit {
       for (const [index, element] of data.entries()) {
         this.loadConflicts(element.ProjectId);
       }
+      this.hasLoaded = true;
     });
   }
 
@@ -41,7 +42,7 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  getUser() {
+  isAdmin() {
     this.auth.profile(localStorage.getItem('EMAIL')).subscribe((profile: User) => {
       if (profile.title !== 'admin') {
         this.router.navigateByUrl('home');
@@ -56,9 +57,8 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getUser();
+    this.isAdmin();
     this.loadTree();
-    this.hasLoaded = true;
   }
 
   createProject() {
@@ -81,6 +81,11 @@ export class AdminComponent implements OnInit {
       this.conflicts = [];
       this.ngOnInit();
     });
+  }
+
+  editForm(conflict) {
+    localStorage.setItem('CONF_ID', conflict);
+    this.router.navigateByUrl('admin/form');
   }
 
 }
