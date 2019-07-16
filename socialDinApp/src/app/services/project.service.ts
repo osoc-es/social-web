@@ -21,4 +21,8 @@ export class ProjectService {
   createProject(body, orgId) {
     return this.http.post(`${this.Adress}projects/add/${orgId}`, body);
   }
+
+  createConflict(body, projectId) {
+    return this.http.post(`${this.Adress}conflicts/add/${projectId}`, body);
+  }
 }

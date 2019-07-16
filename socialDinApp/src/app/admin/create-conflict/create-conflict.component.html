@@ -1,0 +1,18 @@
+<div *ngIf="hasLoaded" class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Herramienta de creación de Conflictos (formularios)</h4>
+</div>
+<form #projectCreation="ngForm" (ngSubmit)="submit(projectCreation.form)">
+  <div class="modal-body">
+    <h5 class="text-center">Conflicto asociado al proyecto:</h5>
+    <select class="form-control" ngModel required name="conflicts">
+      <option> </option>
+      <option *ngFor="let project of projects">{{project.name}}</option>
+    </select><br>
+    <h5 class="text-center">Nombre del conflicto</h5>
+    <input name="title" class="form-control" placeholder="Nombre del conflicto" ngModel required><br>
+    <textarea name="description" class="form-control" placeholder="Descripción del conflicto" ngModel required></textarea>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary btn-block" [disabled]="!projectCreation.valid" type="submit">Crear proyecto</button>
+  </div>
+</form>

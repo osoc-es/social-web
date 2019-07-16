@@ -1,3 +1,4 @@
+import { CreateConflictComponent } from './create-conflict/create-conflict.component';
 import { Problem } from './../interfaces/problem';
 import { Project } from './../interfaces/project';
 import { ProjectService } from './../services/project.service';
@@ -61,7 +62,25 @@ export class AdminComponent implements OnInit {
   }
 
   createProject() {
-    this.modal.open(CreateProjectComponent);
+    const modal = this.modal.open(CreateProjectComponent);
+    modal.result.then(() => {
+      this.conflicts = [];
+      this.ngOnInit();
+    }, () => {
+      this.conflicts = [];
+      this.ngOnInit();
+    });
+  }
+
+  createConflict() {
+    const modal = this.modal.open(CreateConflictComponent);
+    modal.result.then(() => {
+      this.conflicts = [];
+      this.ngOnInit();
+    }, () => {
+      this.conflicts = [];
+      this.ngOnInit();
+    });
   }
 
 }
