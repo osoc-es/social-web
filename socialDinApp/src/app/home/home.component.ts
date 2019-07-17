@@ -27,6 +27,10 @@ export class HomeComponent implements OnInit {
     this.router.navigateByUrl('admin');
   }
 
+  toStats() {
+    this.router.navigateByUrl('social');
+  }
+
   loadData() {
     this.dinapp.getProjects(1).subscribe((data: Project[]) => {
       this.projects = data;

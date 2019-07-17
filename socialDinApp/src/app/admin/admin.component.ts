@@ -1,3 +1,4 @@
+import { CreateUserComponent } from './create-user/create-user.component';
 import { CreateConflictComponent } from './create-conflict/create-conflict.component';
 import { Problem } from './../interfaces/problem';
 import { Project } from './../interfaces/project';
@@ -86,6 +87,17 @@ export class AdminComponent implements OnInit {
   editForm(conflict) {
     localStorage.setItem('CONF_ID', conflict);
     this.router.navigateByUrl('admin/form');
+  }
+
+  createUser() {
+    const modal = this.modal.open(CreateUserComponent);
+    modal.result.then(() => {
+      this.conflicts = [];
+      this.ngOnInit();
+    }, () => {
+      this.conflicts = [];
+      this.ngOnInit();
+    });
   }
 
 }

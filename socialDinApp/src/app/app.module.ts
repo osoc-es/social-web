@@ -18,6 +18,8 @@ import { CreateConflictComponent } from './admin/create-conflict/create-conflict
 import { EditFormComponent } from './admin/edit-form/edit-form.component';
 import { AddQuestionComponent } from './admin/add-question/add-question.component';
 import { ConflictListComponent } from './conflict-list/conflict-list.component';
+import { CreateUserComponent } from './admin/create-user/create-user.component';
+import { SocialPanelComponent } from './social/social-panel/social-panel.component';
 
 
 const appRoutes: Routes = [
@@ -26,7 +28,8 @@ const appRoutes: Routes = [
   { path: 'conflicts/forms', component: QuestionListComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'admin/form', component: EditFormComponent },
-  { path: 'conflicts', component: ConflictListComponent }
+  { path: 'conflicts', component: ConflictListComponent },
+  { path: 'social', component: SocialPanelComponent }
 ];
 
 @NgModule({
@@ -42,6 +45,8 @@ const appRoutes: Routes = [
     EditFormComponent,
     AddQuestionComponent,
     ConflictListComponent,
+    CreateUserComponent,
+    SocialPanelComponent,
   ],
   imports: [
     AngularFontAwesomeModule,
@@ -58,6 +63,7 @@ const appRoutes: Routes = [
     CreateProjectComponent,
     CreateConflictComponent,
     AddQuestionComponent,
+    CreateUserComponent,
   ],
   bootstrap: [AppComponent]
 })
