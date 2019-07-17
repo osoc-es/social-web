@@ -3,4 +3,6 @@ export interface Answer {
   QuestionId: number;
   Answer: string;
   AnswerType: string;
+  Question: string;
+  Options: string;
 }

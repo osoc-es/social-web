@@ -1,3 +1,4 @@
+import { Project } from './../interfaces/project';
 import { Router } from '@angular/router';
 import { Conflict } from './../interfaces/conflict';
 import { AUTHService } from './../services/auth.service';
@@ -20,15 +21,15 @@ export class HomeComponent implements OnInit {
 
   hasLoaded = false;
 
-  problems: [Conflict];
+  projects: Project[];
 
   toAdmin() {
     this.router.navigateByUrl('admin');
   }
 
   loadData() {
-    this.dinapp.getConflicts().subscribe((data: [Conflict]) => {
-      this.problems = data;
+    this.dinapp.getProjects(1).subscribe((data: Project[]) => {
+      this.projects = data;
     });
   }
 
@@ -55,8 +56,8 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  loadForm(id) {
-    localStorage.setItem('FORM', id);
-    this.router.navigateByUrl('forms');
+  loadConflicts(id) {
+    localStorage.setItem('PROJECT_ID', id);
+    this.router.navigateByUrl('conflicts');
   }
 }

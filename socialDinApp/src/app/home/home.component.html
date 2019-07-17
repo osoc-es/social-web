@@ -15,16 +15,16 @@
       </div>
     </div>
   </div>
-  <!-- LIST OF FORMS -->
+  <!-- LIST OF PROJECTS -->
   <div class="background"><br>
-    <h1 class="text-center"> Déjanos ayudarte </h1><br>
+    <h1 class="text-center"> Lista preliminar de proyectos </h1><br>
     <div class="container">
-      <div class="row" *ngFor="let problem of problems">
-        <div class="card" style="width: 100%" (click)="loadForm(problem.ConflictId)">
+      <div class="row" *ngFor="let project of projects">
+        <div class="card" style="width: 100%" (click)="loadConflicts(project.ProjectId)">
           <div class="card-body">
-            <h5 class="card-title">{{problem.title}}</h5>
+            <h5 class="card-title">{{project.name}}</h5>
             <h6 class="card-subtitle mb-2 text-muted">Social Dinapp</h6>
-            <p class="card-text">{{problem.description}}</p>
+            <p class="card-text">{{project.Description}}</p>
           </div>
         </div>
       </div> <br>

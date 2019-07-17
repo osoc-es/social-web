@@ -18,9 +18,9 @@
 				<div class="card-footer">
 					<!-- QUESTION TYPE 0 stands for Open text answer -->
 					<div *ngIf="question.QustionType === '0'">
-            <div *ngFor="let option of question.Options; index as j">
-              <label for="answer-{{i}}-{{j}}">{{option.OptionDescription}}:</label>
-              <textarea class="form-control" type="text" name="{{i}}-{{j}}" placeholder="Tu respuesta" ngModel [required]="question.isMandatory === 1"></textarea>
+            <div>
+              <label for="answer-{{i}}">{{question.Options[0].description}}</label>
+              <textarea class="form-control" type="text" name="{{i}}" placeholder="Tu respuesta" ngModel [required]="question.isMandatory === 1"></textarea>
             </div>
 					</div>
 					<!-- QUESTION TYPE 1 STANDS FOR MULTIPLE CHOICE ANSWER WITH CHECKBOXES -->

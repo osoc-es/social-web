@@ -10,8 +10,12 @@ export class FormService {
 
   constructor(private http: HttpClient) { }
 
-  getConflicts() {
-    return this.http.get(`${this.adress}conflicts`);
+  getProjects(orgId) {
+    return this.http.get(`${this.adress}projects/${orgId}`);
+  }
+
+  getConflicts(projectId) {
+    return this.http.get(`${this.adress}conflicts/${projectId}`);
   }
 
   getForm(id) {

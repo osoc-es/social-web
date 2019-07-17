@@ -34,6 +34,7 @@ export class QuestionListComponent implements OnInit {
 
   submit(answers) {
     this.email = localStorage.getItem('EMAIL');
+    console.log(answers.value);
     if (this.email !== 'GUEST') {
       // BUILD JSON ARRAY
       const array: Answer[] = [];
@@ -41,7 +42,7 @@ export class QuestionListComponent implements OnInit {
       for (let i = 0; i < this.questions.length; i++) {
         let answer = '';
         // MIX IN ALL KEYS
-        if (this.questions[i].QustionType === '1' || this.questions[i].QustionType === '0') {
+        if (this.questions[i].QustionType === '1') {
           for (let j = 0; j < this.questions[i].Options.length; j++) {
             const test = `${i}-${j}`;
             if (answers.value[test]) {
@@ -52,7 +53,16 @@ export class QuestionListComponent implements OnInit {
         } else {
           answer = answers.value[i];
         }
+        // MIX IN ALL OPTIONS
+        let options = '';
+        // tslint:disable-next-line: prefer-for-of
+        for (let j = 0; j < this.questions[i].Options.length; j++) {
+          options += options === '' ? '' : ', ';
+          options += this.questions[i].Options[j].OptionDescription;
+        }
         const ans = ({
+          Question: this.questions[i].Question,
+          Options: options,
           Email: this.email,
           QuestionId: this.questions[i].QuestionId,
           Answer: answer,
@@ -69,13 +79,14 @@ export class QuestionListComponent implements OnInit {
           this.error = error.message;
         }
       });
+      console.log(array);
     } else {
       this.modal.open(LoginComponent);
     }
   }
 
   loadQuestions() {
-    const id = localStorage.getItem('FORM');
+    const id = localStorage.getItem('CONF_ID');
     if (id === null) {
       this.router.navigateByUrl('');
     } else {
