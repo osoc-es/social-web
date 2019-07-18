@@ -5,4 +5,6 @@ export interface Answer {
   AnswerType: string;
   Question: string;
   Options: string;
+  ProblemType: string;
+  time: string;
 }

@@ -1,3 +1,6 @@
+import { Answer } from './../../interfaces/answer';
+import { Userdata } from './../../interfaces/usedata';
+import { SocialService } from './../../services/social.service';
 import { Form } from './../../interfaces/form';
 import { Conflict } from './../../interfaces/conflict';
 import { ProjectService } from 'src/app/services/project.service';
@@ -14,13 +17,14 @@ import { Project } from 'src/app/interfaces/project';
 })
 export class SocialPanelComponent implements OnInit {
 
-  hasLoaded = true;
+  hasLoaded = false;
   user: User;
   projects: Project[];
   conflicts: Conflict[] = [];
   Forms: Form[] = [];
+  userdata: Userdata[] = [];
 
-  constructor(private auth: AUTHService, private router: Router, private p: ProjectService) { }
+  constructor(private auth: AUTHService, private router: Router, private p: ProjectService, private social: SocialService) { }
 
   loadData() {
     const email = localStorage.getItem('EMAIL');
@@ -41,6 +45,10 @@ export class SocialPanelComponent implements OnInit {
                 this.p.getForms(conflict.ConflictId).subscribe((forms: Form[]) => {
                   this.Forms.push(forms[0]);
                   this.hasLoaded = true;
+                  this.social.getConflictPariticipants(conflict.title).subscribe((userdata: Userdata[]) => {
+                    userdata.forEach(user => this.userdata.push(user));
+                    this.hasLoaded = true;
+                  });
                 });
               }
             });
@@ -49,6 +57,36 @@ export class SocialPanelComponent implements OnInit {
       });
     }
   }
+
+  showData(userdata: Userdata) {
+    console.log(userdata);
+    this.social.getUserAnswers(userdata.ProblemType, userdata.Email).subscribe((answers: Answer[]) => {
+      const answersCSV = this.toCSV(answers);
+      console.log(answersCSV);
+      // window.open(encodeURI(answersCSV));
+    });
+  }
+
+  toCSV(objArray) {
+    const array = typeof objArray !== 'object' ? JSON.parse(objArray) : objArray;
+    let str = '';
+
+    // tslint:disable-next-line: prefer-for-of
+    for (let i = 0; i < array.length; i++) {
+      let line = '';
+      // tslint:disable-next-line: forin
+      for (const index in array[i]) {
+          if (line !== '') { line += ','; }
+
+          line += array[i][index];
+      }
+
+      str += line + '\r\n';
+    }
+
+    return str;
+}
+
 
   ngOnInit() {
     this.loadData();

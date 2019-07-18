@@ -20,6 +20,7 @@ import { AddQuestionComponent } from './admin/add-question/add-question.componen
 import { ConflictListComponent } from './conflict-list/conflict-list.component';
 import { CreateUserComponent } from './admin/create-user/create-user.component';
 import { SocialPanelComponent } from './social/social-panel/social-panel.component';
+import { ShowAnswersComponent } from './social/show-answers/show-answers.component';
 
 
 const appRoutes: Routes = [
@@ -47,6 +48,7 @@ const appRoutes: Routes = [
     ConflictListComponent,
     CreateUserComponent,
     SocialPanelComponent,
+    ShowAnswersComponent,
   ],
   imports: [
     AngularFontAwesomeModule,

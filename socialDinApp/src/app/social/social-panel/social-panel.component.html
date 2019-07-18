@@ -1,3 +1,20 @@
 <div *ngIf="hasLoaded">
-  hola
+  <h1 class="text-center"> Bienvenido, {{user.FirstName}} {{user.LastName}}</h1><hr>
+  <div class="container">
+    <h2 class="text-center"> Lista de conflictos </h2>
+    <p class="text-center"> Haz click en un usuario para generar un archivo CSV con sus respuestas </p>
+    <ngb-accordion [closeOthers]="true">
+      <ngb-panel *ngFor="let conflict of conflicts; index as i" id="static-{{i+1}}" title="{{conflict.title}}">
+        <ng-template ngbPanelContent>
+          <div *ngFor="let data of userdata; index as i">
+            <div *ngIf="data.ProblemType === conflict.title">
+              <hr>
+              <button class="btn btn-block" (click)="showData(data)">{{data.FirstName}} {{data.LastName}}</button>
+              <hr>
+            </div>
+          </div>
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+  </div>
 </div>
