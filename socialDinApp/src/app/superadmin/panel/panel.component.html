@@ -1,0 +1,15 @@
+<div *ngIf="hasLoaded" class="container">
+	<h1 class="text-center">Panel de administrador global</h1><hr>
+	<h3 class="text-center"> Tipos de conflictos </h3>
+	<ul>
+		<li *ngFor="let conflict of conflicts">
+			{{ conflict.title }}
+		</li>
+	</ul>
+	<div class="row">
+		<button class="btn btn-primary btn-block" [disabled]="true">Crear admin local</button>
+	</div><br>
+	<div class="row">
+		<button (click)="createConflict()" class="btn btn-primary btn-block">Crear tipo de conflicto</button>
+	</div>
+</div>

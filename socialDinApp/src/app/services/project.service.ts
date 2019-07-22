@@ -14,16 +14,16 @@ export class ProjectService {
     return this.http.get(`${this.Adress}projects/${id}`);
   }
 
-  getConflicts(projectId) {
-    return this.http.get(`${this.Adress}conflicts/${projectId}`);
+  getConflicts() {
+    return this.http.get(`${this.Adress}conflicts/`);
   }
 
   createProject(body, orgId) {
     return this.http.post(`${this.Adress}projects/add/${orgId}`, body);
   }
 
-  createConflict(body, projectId) {
-    return this.http.post(`${this.Adress}conflicts/add/${projectId}`, body);
+  createConflict(body) {
+    return this.http.post(`${this.Adress}conflicts/add/`, body);
   }
 
   createForm(body, conflictId) {

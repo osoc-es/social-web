@@ -36,7 +36,7 @@ export class AdminComponent implements OnInit {
   }
 
   loadConflicts(i) {
-    this.project.getConflicts(i).subscribe((data: [Problem]) => {
+    this.project.getConflicts().subscribe((data: [Problem]) => {
       data.forEach((test) => {
         this.conflicts.push(test);
       });

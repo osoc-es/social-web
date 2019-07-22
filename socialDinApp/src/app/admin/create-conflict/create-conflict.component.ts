@@ -10,16 +10,11 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class CreateConflictComponent implements OnInit {
 
-  projects: Project[];
-  hasLoaded = false;
+  hasLoaded = true;
 
   constructor(private p: ProjectService, private modal: NgbActiveModal) { }
 
   ngOnInit() {
-    this.p.getProjects(1).subscribe((data: Project[]) => {
-      this.projects = data;
-      this.hasLoaded = true;
-    });
   }
 
   submit(form) {
@@ -27,10 +22,7 @@ export class CreateConflictComponent implements OnInit {
       title: form.value.title,
       description: form.value.description,
     };
-    const id = this.projects.find((element) => {
-      return element.name === form.value.conflicts;
-    }).ProjectId;
-    this.p.createConflict(body, id).subscribe((data: {
+    this.p.createConflict(body).subscribe((data: {
       ConflictId: number
     }) => {
       const formbody = {

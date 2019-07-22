@@ -38,21 +38,19 @@ export class SocialPanelComponent implements OnInit {
         }
         this.p.getProjects(1).subscribe((projects: Project[]) => {
           this.projects = projects;
-          for (const project of projects) {
-            this.p.getConflicts(project.ProjectId).subscribe((conflicts: Conflict[]) => {
-              for (const conflict of conflicts) {
-                this.conflicts.push(conflict);
-                this.p.getForms(conflict.ConflictId).subscribe((forms: Form[]) => {
-                  this.Forms.push(forms[0]);
+          this.p.getConflicts().subscribe((conflicts: Conflict[]) => {
+            for (const conflict of conflicts) {
+              this.conflicts.push(conflict);
+              this.p.getForms(conflict.ConflictId).subscribe((forms: Form[]) => {
+                this.Forms.push(forms[0]);
+                this.hasLoaded = true;
+                this.social.getConflictPariticipants(conflict.title).subscribe((userdata: Userdata[]) => {
+                  userdata.forEach(user => this.userdata.push(user));
                   this.hasLoaded = true;
-                  this.social.getConflictPariticipants(conflict.title).subscribe((userdata: Userdata[]) => {
-                    userdata.forEach(user => this.userdata.push(user));
-                    this.hasLoaded = true;
-                  });
                 });
-              }
-            });
-          }
+              });
+            }
+          });
         });
       });
     }
