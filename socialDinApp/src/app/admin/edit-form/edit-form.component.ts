@@ -27,7 +27,7 @@ export class EditFormComponent implements OnInit {
 
   isAdmin() {
     this.auth.profile(localStorage.getItem('EMAIL')).subscribe((profile: User) => {
-      if (profile.title !== 'admin') {
+      if (profile.title !== 'super') {
         this.router.navigateByUrl('home');
       }
     }, (err) => {

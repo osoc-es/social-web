@@ -27,6 +27,10 @@ export class HomeComponent implements OnInit {
     this.router.navigateByUrl('admin');
   }
 
+  toSadmin() {
+    this.router.navigateByUrl('sadmin');
+  }
+
   toStats() {
     this.router.navigateByUrl('social');
   }

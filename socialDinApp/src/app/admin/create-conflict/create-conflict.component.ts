@@ -1,5 +1,4 @@
 import { ProjectService } from './../../services/project.service';
-import { Project } from './../../interfaces/project';
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -29,7 +28,6 @@ export class CreateConflictComponent implements OnInit {
         description: form.value.fdescription
       };
       this.p.createForm(formbody, data.ConflictId).subscribe(() => {
-        console.log('form created succesfully');
         this.modal.close();
       });
     });

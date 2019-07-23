@@ -3,7 +3,7 @@
 	<h3 class="text-center"> Tipos de conflictos </h3>
 	<ul>
 		<li *ngFor="let conflict of conflicts">
-			{{ conflict.title }}
+			<button type="button" class="btn btn-link" (click)="editForm(conflict.ConflictId)">{{ conflict.title }}</button>
 		</li>
 	</ul>
 	<div class="row">

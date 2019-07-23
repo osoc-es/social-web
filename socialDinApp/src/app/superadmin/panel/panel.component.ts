@@ -36,7 +36,17 @@ export class PanelComponent implements OnInit {
   }
 
   createConflict() {
-    this.modal.open(CreateConflictComponent);
+    const modal = this.modal.open(CreateConflictComponent);
+    modal.result.then(() => {
+      this.ngOnInit();
+    }, () => {
+      this.ngOnInit();
+    });
+  }
+
+  editForm(conflictId) {
+    localStorage.setItem('CONF_ID', conflictId);
+    this.router.navigateByUrl('admin/form');
   }
 
 }
