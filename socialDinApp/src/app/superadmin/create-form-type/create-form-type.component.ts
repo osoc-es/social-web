@@ -28,7 +28,6 @@ export class CreateFormTypeComponent implements OnInit {
         description: form.value.fdescription
       };
       this.p.createForm(formbody, data.ConflictId).subscribe(() => {
-        console.log('form created succesfully');
         this.modal.close();
       });
     });

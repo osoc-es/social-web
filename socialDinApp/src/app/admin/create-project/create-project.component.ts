@@ -13,7 +13,6 @@ export class CreateProjectComponent implements OnInit {
 
   submit(form) {
     this.project.createProject(form.value).subscribe(() => {
-      console.log('project created successfully');
       this.modal.close();
     });
   }

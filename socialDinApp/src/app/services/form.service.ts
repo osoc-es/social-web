@@ -19,6 +19,10 @@ export class FormService {
     return this.http.get(`${this.adress}conflicts/${projectId}`);
   }
 
+  getConflictsFromProject(projectId) {
+    return this.http.get(`${this.adress}projects/conflicts/${localStorage.getItem('ORG_ID')}/${projectId}`)
+  }
+
   getForm(id) {
     return this.http.get(`${this.adress}forms/${id}`);
   } // id represents the conflict id

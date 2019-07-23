@@ -57,7 +57,6 @@ export class SocialPanelComponent implements OnInit {
   }
 
   showData(userdata: Userdata) {
-    console.log(userdata);
     this.social.getUserAnswers(userdata.ProblemType, userdata.Email).subscribe((answers: Answer[]) => {
       const answersCSV = this.toCSV(answers);
       console.log(answersCSV);

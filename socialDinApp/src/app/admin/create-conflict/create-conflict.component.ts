@@ -45,7 +45,6 @@ export class CreateConflictComponent implements OnInit {
       return project.name === form.value.project;
     }).ProjectId;
     this.p.addConflictToProject(projectId, conflictId).subscribe(() => {
-      console.log('conflict created successfully ! ');
       this.modal.close();
     });
   }

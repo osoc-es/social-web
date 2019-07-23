@@ -34,7 +34,6 @@ export class QuestionListComponent implements OnInit {
 
   submit(answers) {
     this.email = localStorage.getItem('EMAIL');
-    console.log(answers.value);
     if (this.email !== 'GUEST') {
       // BUILD JSON ARRAY
       const array: Answer[] = [];
@@ -79,7 +78,6 @@ export class QuestionListComponent implements OnInit {
           this.error = error.message;
         }
       });
-      console.log(array);
     } else {
       this.modal.open(LoginComponent);
     }

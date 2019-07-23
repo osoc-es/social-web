@@ -84,7 +84,6 @@ export class AddQuestionComponent implements OnInit {
 
   sendData() {
     this.p.addQuestion(this.question, this.formId).subscribe(() => {
-      console.log('Question added !');
       this.modal.close();
     });
   }
