@@ -7,16 +7,16 @@
         <h4 style="display: inline"> {{project.name}}: </h4>
         <span>{{project.Description}}</span>
         <ul>
-          <div *ngFor="let conflict of conflicts; index as j">
+          <div *ngFor="let conflict of projectConflicts">
             <li *ngIf="conflict.ProjectId === project.ProjectId">
-              <button type="button" class="btn btn-link" (click)="editForm(conflict.ConflictId)">{{conflict.title}}</button>
+              {{conflict.title}}
             </li>
           </div>
         </ul>
       </li>
     </ul>
     <div class="row">
-      <button type="button" class="btn btn-primary btn-block" (click)="createProject()">Añadir proyecto (Categoría)</button>
+      <button type="button" class="btn btn-primary btn-block" (click)="createProject()">Añadir proyecto</button>
     </div><br>
     <div class="row">
       <button type="button" class="btn btn-primary btn-block" (click)="createConflict()" [disabled]="projects.length === 0">Añadir conflicto (Formulario)</button>

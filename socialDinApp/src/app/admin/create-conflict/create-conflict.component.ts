@@ -1,3 +1,5 @@
+import { Conflict } from './../../interfaces/conflict';
+import { Project } from 'src/app/interfaces/project';
 import { ProjectService } from './../../services/project.service';
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -9,27 +11,42 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class CreateConflictComponent implements OnInit {
 
-  hasLoaded = true;
+  hasLoaded = false;
+
+  projects: Project[];
+
+  conflicts: Conflict[];
 
   constructor(private p: ProjectService, private modal: NgbActiveModal) { }
 
+  getProjects() {
+    this.p.getProjects(1).subscribe((projects: Project[]) => {
+      this.projects = projects;
+      this.getConflicts();
+    });
+  }
+
+  getConflicts() {
+    this.p.getConflicts().subscribe((conflicts: Conflict[]) => {
+      this.conflicts = conflicts;
+      this.hasLoaded = true;
+    });
+  }
+
   ngOnInit() {
+    this.getProjects();
   }
 
   submit(form) {
-    const body = {
-      title: form.value.title,
-      description: form.value.description,
-    };
-    this.p.createConflict(body).subscribe((data: {
-      ConflictId: number
-    }) => {
-      const formbody = {
-        description: form.value.fdescription
-      };
-      this.p.createForm(formbody, data.ConflictId).subscribe(() => {
-        this.modal.close();
-      });
+    const conflictId = this.conflicts.find(conflict => {
+      return conflict.title === form.value.conflict;
+    }).ConflictId;
+    const projectId = this.projects.find(project => {
+      return project.name === form.value.project;
+    }).ProjectId;
+    this.p.addConflictToProject(projectId, conflictId).subscribe(() => {
+      console.log('conflict created successfully ! ');
+      this.modal.close();
     });
   }
 

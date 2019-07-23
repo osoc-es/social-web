@@ -1,6 +1,6 @@
+import { ProjectConflicts } from './../interfaces/project-conflicts';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { CreateConflictComponent } from './create-conflict/create-conflict.component';
-import { Problem } from './../interfaces/problem';
 import { Project } from './../interfaces/project';
 import { ProjectService } from './../services/project.service';
 import { User } from './../interfaces/user';
@@ -19,26 +19,18 @@ export class AdminComponent implements OnInit {
 
   hasLoaded = false;
 
-  projects: [Project];
+  projects: Project[];
 
-  conflicts: Problem[] = [];
+  projectConflicts: ProjectConflicts[];
 
   constructor(private auth: AUTHService, private router: Router, private project: ProjectService, private modal: NgbModal) { }
 
   loadTree() {
-    this.project.getProjects(1).subscribe((data: [Project]) => {
+    this.project.getProjects(1).subscribe((data: Project[]) => {
       this.projects = data;
-      for (const [index, element] of data.entries()) {
-        this.loadConflicts(element.ProjectId);
-      }
       this.hasLoaded = true;
-    });
-  }
-
-  loadConflicts(i) {
-    this.project.getConflicts().subscribe((data: [Problem]) => {
-      data.forEach((test) => {
-        this.conflicts.push(test);
+      this.project.getProjectsAndConflicts(1).subscribe((conflicts: ProjectConflicts[]) => {
+        this.projectConflicts = conflicts;
       });
     });
   }
@@ -65,10 +57,8 @@ export class AdminComponent implements OnInit {
   createProject() {
     const modal = this.modal.open(CreateProjectComponent);
     modal.result.then(() => {
-      this.conflicts = [];
       this.ngOnInit();
     }, () => {
-      this.conflicts = [];
       this.ngOnInit();
     });
   }
@@ -76,10 +66,8 @@ export class AdminComponent implements OnInit {
   createConflict() {
     const modal = this.modal.open(CreateConflictComponent);
     modal.result.then(() => {
-      this.conflicts = [];
       this.ngOnInit();
     }, () => {
-      this.conflicts = [];
       this.ngOnInit();
     });
   }
@@ -92,10 +80,8 @@ export class AdminComponent implements OnInit {
   createUser() {
     const modal = this.modal.open(CreateUserComponent);
     modal.result.then(() => {
-      this.conflicts = [];
       this.ngOnInit();
     }, () => {
-      this.conflicts = [];
       this.ngOnInit();
     });
   }

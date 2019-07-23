@@ -14,6 +14,10 @@ export class ProjectService {
     return this.http.get(`${this.Adress}projects/${id}`);
   }
 
+  getProjectsAndConflicts(orgId) {
+    return this.http.get(`${this.Adress}projects/projectconflicts/${orgId}`);
+  }
+
   getConflicts() {
     return this.http.get(`${this.Adress}conflicts/`);
   }
@@ -40,5 +44,9 @@ export class ProjectService {
 
   addQuestion(body, formId) {
     return this.http.post(`${this.Adress}questions/add/${formId}`, body);
+  }
+
+  addConflictToProject(projectId, conflictId) {
+    return this.http.post(`${this.Adress}projects/add/${projectId}/${conflictId}`, {});
   }
 }
