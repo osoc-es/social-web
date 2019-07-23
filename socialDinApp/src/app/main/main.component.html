@@ -1,52 +1,54 @@
-<div class="parallax">
-  <div class="container"><br><br><br><br><br><br><br>
-    <h1 class="text-center text-white">Social DinAPP</h1><br><br><br><br>
-    <div class="row">
-      <div class="col align-self-start">
-        <button class="btn btn-lg btn-primary btn-block" (click)="open()">Crear una consulta</button>
-      </div>
-      <div class="col align-self-end">
-        <button class="btn btn-lg btn-outline-primary btn-block" (click)="about()">Acerca de nosotros</button>
+<div *ngIf="hasLoaded">
+  <div class="parallax">
+    <div class="container"><br><br><br><br><br><br><br>
+      <h1 class="text-center text-white">Social DinAPP</h1><br><br><br><br>
+      <div class="row">
+        <div class="col align-self-start">
+          <button class="btn btn-lg btn-primary btn-block" (click)="open()">Crear una consulta</button>
+        </div>
+        <div class="col align-self-end">
+          <button class="btn btn-lg btn-outline-primary btn-block" (click)="about()">Acerca de nosotros</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div class="light">
-  <!-- PLACEHOLDER -->
-  <div class="container"><br><br>
-    <div class="row">
-      <div class="col">
-        <fa name="question" size="2x"></fa>
-        <h2 style="display: inline"> Lorem ipsum</h2><br><br>
-        <p class="text-justify"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel turpis augue. Sed elementum tellus ac felis tincidunt eleifend. Nulla commodo urna in neque egestas, ut suscipit ipsum cursus. Aliquam erat volutpat. Mauris tempor, ex vitae tincidunt tristique, magna mauris dapibus ante, in euismod ligula dolor in eros. Ut scelerisque hendrerit dui, nec faucibus dolor finibus non. Proin malesuada neque ut maximus mollis. Cras imperdiet massa mauris, at mollis turpis porttitor a. Nunc placerat molestie lectus ornare rutrum. Nam non volutpat odio. Integer sed pretium metus. Suspendisse posuere finibus consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; </p>
+  <div class="light">
+    <!-- PLACEHOLDER -->
+    <div class="container"><br><br>
+      <div class="row">
+        <div class="col">
+          <fa name="question" size="2x"></fa>
+          <h2 style="display: inline"> Lorem ipsum</h2><br><br>
+          <p class="text-justify"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel turpis augue. Sed elementum tellus ac felis tincidunt eleifend. Nulla commodo urna in neque egestas, ut suscipit ipsum cursus. Aliquam erat volutpat. Mauris tempor, ex vitae tincidunt tristique, magna mauris dapibus ante, in euismod ligula dolor in eros. Ut scelerisque hendrerit dui, nec faucibus dolor finibus non. Proin malesuada neque ut maximus mollis. Cras imperdiet massa mauris, at mollis turpis porttitor a. Nunc placerat molestie lectus ornare rutrum. Nam non volutpat odio. Integer sed pretium metus. Suspendisse posuere finibus consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; </p>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-8">
-        <fa name="question" size="2x"></fa>
-        <h2 style="display: inline"> Lorem ipsum</h2><br><br>
-        <p class="text-justify"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel turpis augue. Sed elementum tellus ac felis tincidunt eleifend. Nulla commodo urna in neque egestas, ut suscipit ipsum cursus. Aliquam erat volutpat. Mauris tempor, ex vitae tincidunt tristique, magna mauris dapibus ante, in euismod ligula dolor in eros. </p>
-      </div>
-      <div class="col-auto">
-        <img src="https://picsum.photos/id/1035/320/240">
+      <div class="row">
+        <div class="col-sm-8">
+          <fa name="question" size="2x"></fa>
+          <h2 style="display: inline"> Lorem ipsum</h2><br><br>
+          <p class="text-justify"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel turpis augue. Sed elementum tellus ac felis tincidunt eleifend. Nulla commodo urna in neque egestas, ut suscipit ipsum cursus. Aliquam erat volutpat. Mauris tempor, ex vitae tincidunt tristique, magna mauris dapibus ante, in euismod ligula dolor in eros. </p>
+        </div>
+        <div class="col-auto">
+          <img src="https://picsum.photos/id/1035/320/240">
+        </div>
+      </div><br>
+      <div class="row">
+        <div class="col">
+          <fa name="question" size="2x"></fa>
+          <h2 style="display: inline"> Lorem ipsum</h2><br><br>
+          <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel turpis augue. Sed elementum tellus ac felis tincidunt eleifend. Nulla commodo urna in neque egestas, ut suscipit ipsum cursus. Aliquam erat volutpat. Mauris tempor, ex vitae tincidunt tristique, magna mauris dapibus ante, in euismod ligula dolor in eros. Ut scelerisque hendrerit dui, nec faucibus dolor finibus non. Proin malesuada neque ut maximus mollis. Cras imperdiet massa mauris, at mollis turpis porttitor a. Nunc placerat molestie lectus ornare rutrum. Nam non volutpat odio. Integer sed pretium metus. Suspendisse posuere finibus consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; </p>
+        </div>
       </div>
     </div><br>
-    <div class="row">
-      <div class="col">
-        <fa name="question" size="2x"></fa>
-        <h2 style="display: inline"> Lorem ipsum</h2><br><br>
-        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel turpis augue. Sed elementum tellus ac felis tincidunt eleifend. Nulla commodo urna in neque egestas, ut suscipit ipsum cursus. Aliquam erat volutpat. Mauris tempor, ex vitae tincidunt tristique, magna mauris dapibus ante, in euismod ligula dolor in eros. Ut scelerisque hendrerit dui, nec faucibus dolor finibus non. Proin malesuada neque ut maximus mollis. Cras imperdiet massa mauris, at mollis turpis porttitor a. Nunc placerat molestie lectus ornare rutrum. Nam non volutpat odio. Integer sed pretium metus. Suspendisse posuere finibus consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; </p>
+  </div>
+  <div class="rand-parallax">
+    <div class="container h-100">
+      <div class="row h-100 justify-content-center align-items-center">
+        <button class="btn btn-lg btn-primary" (click)="open()">Crear una consulta</button>
       </div>
     </div>
-  </div><br>
-</div>
-<div class="rand-parallax">
-  <div class="container h-100">
-    <div class="row h-100 justify-content-center align-items-center">
-      <button class="btn btn-lg btn-primary" (click)="open()">Crear una consulta</button>
-    </div>
   </div>
-</div>
-<div class="footer"><br>
-  <p class="text-center"> Social Dinapp, C/ Santa Virgilia, 14.  2º A Madrid-28033, (+34) 616515443 </p>
+  <div class="footer"><br>
+    <p class="text-center"> Social Dinapp, C/ Santa Virgilia, 14.  2º A Madrid-28033, (+34) 616515443 </p>
+  </div>
 </div>

@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
   }
 
   loadData() {
-    this.dinapp.getProjects(1).subscribe((data: Project[]) => {
+    this.dinapp.getProjects().subscribe((data: Project[]) => {
       this.projects = data;
     });
   }

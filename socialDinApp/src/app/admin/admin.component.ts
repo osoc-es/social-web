@@ -26,10 +26,10 @@ export class AdminComponent implements OnInit {
   constructor(private auth: AUTHService, private router: Router, private project: ProjectService, private modal: NgbModal) { }
 
   loadTree() {
-    this.project.getProjects(1).subscribe((data: Project[]) => {
+    this.project.getProjects().subscribe((data: Project[]) => {
       this.projects = data;
       this.hasLoaded = true;
-      this.project.getProjectsAndConflicts(1).subscribe((conflicts: ProjectConflicts[]) => {
+      this.project.getProjectsAndConflicts().subscribe((conflicts: ProjectConflicts[]) => {
         this.projectConflicts = conflicts;
       });
     });

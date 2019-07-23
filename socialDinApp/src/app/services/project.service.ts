@@ -10,11 +10,13 @@ export class ProjectService {
 
   constructor(private http: HttpClient) { }
 
-  getProjects(id) {
-    return this.http.get(`${this.Adress}projects/${id}`);
+  getProjects() {
+    const orgId = localStorage.getItem('ORG_ID');
+    return this.http.get(`${this.Adress}projects/${orgId}`);
   }
 
-  getProjectsAndConflicts(orgId) {
+  getProjectsAndConflicts() {
+    const orgId = localStorage.getItem('ORG_ID');
     return this.http.get(`${this.Adress}projects/projectconflicts/${orgId}`);
   }
 
@@ -22,7 +24,8 @@ export class ProjectService {
     return this.http.get(`${this.Adress}conflicts/`);
   }
 
-  createProject(body, orgId) {
+  createProject(body) {
+    const orgId = localStorage.getItem('ORG_ID');
     return this.http.post(`${this.Adress}projects/add/${orgId}`, body);
   }
 

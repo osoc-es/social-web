@@ -36,7 +36,7 @@ export class SocialPanelComponent implements OnInit {
         if (data.title !== 'admin' && data.title !== 'social') {
           this.router.navigateByUrl('home');
         }
-        this.p.getProjects(1).subscribe((projects: Project[]) => {
+        this.p.getProjects().subscribe((projects: Project[]) => {
           this.projects = projects;
           this.p.getConflicts().subscribe((conflicts: Conflict[]) => {
             for (const conflict of conflicts) {
@@ -61,7 +61,6 @@ export class SocialPanelComponent implements OnInit {
     this.social.getUserAnswers(userdata.ProblemType, userdata.Email).subscribe((answers: Answer[]) => {
       const answersCSV = this.toCSV(answers);
       console.log(answersCSV);
-      // window.open(encodeURI(answersCSV));
     });
   }
 

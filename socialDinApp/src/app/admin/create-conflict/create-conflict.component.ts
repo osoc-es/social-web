@@ -20,7 +20,7 @@ export class CreateConflictComponent implements OnInit {
   constructor(private p: ProjectService, private modal: NgbActiveModal) { }
 
   getProjects() {
-    this.p.getProjects(1).subscribe((projects: Project[]) => {
+    this.p.getProjects().subscribe((projects: Project[]) => {
       this.projects = projects;
       this.getConflicts();
     });

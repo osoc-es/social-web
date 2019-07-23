@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CreateConflictComponent } from 'src/app/admin/create-conflict/create-conflict.component';
+import { CreateFormTypeComponent } from '../create-form-type/create-form-type.component';
 
 @Component({
   selector: 'app-panel',
@@ -36,7 +37,7 @@ export class PanelComponent implements OnInit {
   }
 
   createConflict() {
-    const modal = this.modal.open(CreateConflictComponent);
+    const modal = this.modal.open(CreateFormTypeComponent);
     modal.result.then(() => {
       this.ngOnInit();
     }, () => {

@@ -22,6 +22,7 @@ import { CreateUserComponent } from './admin/create-user/create-user.component';
 import { SocialPanelComponent } from './social/social-panel/social-panel.component';
 import { ShowAnswersComponent } from './social/show-answers/show-answers.component';
 import { PanelComponent } from './superadmin/panel/panel.component';
+import { CreateFormTypeComponent } from './superadmin/create-form-type/create-form-type.component';
 
 
 const appRoutes: Routes = [
@@ -52,6 +53,7 @@ const appRoutes: Routes = [
     SocialPanelComponent,
     ShowAnswersComponent,
     PanelComponent,
+    CreateFormTypeComponent,
   ],
   imports: [
     AngularFontAwesomeModule,
@@ -69,6 +71,7 @@ const appRoutes: Routes = [
     CreateConflictComponent,
     AddQuestionComponent,
     CreateUserComponent,
+    CreateFormTypeComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -10,7 +10,8 @@ export class FormService {
 
   constructor(private http: HttpClient) { }
 
-  getProjects(orgId) {
+  getProjects() {
+    const orgId = localStorage.getItem('ORG_ID');
     return this.http.get(`${this.adress}projects/${orgId}`);
   }
 

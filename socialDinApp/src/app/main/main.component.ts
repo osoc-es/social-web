@@ -2,6 +2,8 @@ import { LoginComponent } from './../login/login.component';
 import { Component, OnInit } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
+import { OrganizationService } from '../services/organization.service';
+import { Organization } from '../interfaces/organization';
 
 @Component({
   selector: 'app-main',
@@ -11,7 +13,11 @@ import { Router } from '@angular/router';
 })
 export class MainComponent implements OnInit {
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal, private router: Router) { }
+  hasLoaded = false;
+
+  organization: Organization;
+
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private router: Router, private org: OrganizationService) { }
 
   open() {
     if (localStorage.getItem('EMAIL') === null) {
@@ -30,7 +36,20 @@ export class MainComponent implements OnInit {
     });
   }
 
+  getOrganization() {
+    this.org.getOrganizationList().subscribe((orgs: Organization[]) => {
+      this.organization = orgs.find(org => {
+        return org.OrgUrl === window.location.hostname;
+      });
+      if (this.organization !== undefined) {
+        localStorage.setItem('ORG_ID', this.organization.OrgId);
+        this.hasLoaded = true;
+      }
+    });
+  }
+
   ngOnInit() {
+    this.getOrganization();
   }
 
 }

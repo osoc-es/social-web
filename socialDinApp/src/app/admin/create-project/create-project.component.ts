@@ -12,7 +12,7 @@ export class CreateProjectComponent implements OnInit {
   constructor(private project: ProjectService, private modal: NgbActiveModal) { }
 
   submit(form) {
-    this.project.createProject(form.value, 1).subscribe(() => {
+    this.project.createProject(form.value).subscribe(() => {
       console.log('project created successfully');
       this.modal.close();
     });
