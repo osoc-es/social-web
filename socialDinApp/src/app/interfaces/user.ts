@@ -8,4 +8,5 @@ export interface User {
   UserType: string;
   DOB: string;
   title: string;
+  OrgId: string;
 }

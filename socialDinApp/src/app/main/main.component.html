@@ -1,54 +1,45 @@
 <div *ngIf="hasLoaded">
-  <div class="parallax">
-    <div class="container"><br><br><br><br><br><br><br>
-      <h1 class="text-center text-white">Social DinAPP</h1><br><br><br><br>
-      <div class="row">
-        <div class="col align-self-start">
-          <button class="btn btn-lg btn-primary btn-block" (click)="open()">Crear una consulta</button>
+  <nav class="navbar">
+    <div class="container">
+      <img src="../../assets/image.png" width="250vh">
+    </div>
+  </nav>
+  <div class="background">
+    <div class="container"><br>
+      <div class="row justify-content-md-center">
+        <div class="col"></div>
+        <div class="col-md-auto">
+          <button class="btn btn-lg btn-primary btn-block" (click)="open()">Hacer test</button>
         </div>
-        <div class="col align-self-end">
-          <button class="btn btn-lg btn-outline-primary btn-block" (click)="about()">Acerca de nosotros</button>
+        <div class="col col-lg-2">
+          <button class="btn btn-lg btn-outline-primary btn-block">Resultados</button>
         </div>
       </div>
     </div>
-  </div>
-  <div class="light">
-    <!-- PLACEHOLDER -->
-    <div class="container"><br><br>
-      <div class="row">
-        <div class="col">
-          <fa name="question" size="2x"></fa>
-          <h2 style="display: inline"> Lorem ipsum</h2><br><br>
-          <p class="text-justify"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel turpis augue. Sed elementum tellus ac felis tincidunt eleifend. Nulla commodo urna in neque egestas, ut suscipit ipsum cursus. Aliquam erat volutpat. Mauris tempor, ex vitae tincidunt tristique, magna mauris dapibus ante, in euismod ligula dolor in eros. Ut scelerisque hendrerit dui, nec faucibus dolor finibus non. Proin malesuada neque ut maximus mollis. Cras imperdiet massa mauris, at mollis turpis porttitor a. Nunc placerat molestie lectus ornare rutrum. Nam non volutpat odio. Integer sed pretium metus. Suspendisse posuere finibus consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-8">
-          <fa name="question" size="2x"></fa>
-          <h2 style="display: inline"> Lorem ipsum</h2><br><br>
-          <p class="text-justify"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel turpis augue. Sed elementum tellus ac felis tincidunt eleifend. Nulla commodo urna in neque egestas, ut suscipit ipsum cursus. Aliquam erat volutpat. Mauris tempor, ex vitae tincidunt tristique, magna mauris dapibus ante, in euismod ligula dolor in eros. </p>
-        </div>
-        <div class="col-auto">
-          <img src="https://picsum.photos/id/1035/320/240">
-        </div>
-      </div><br>
-      <div class="row">
-        <div class="col">
-          <fa name="question" size="2x"></fa>
-          <h2 style="display: inline"> Lorem ipsum</h2><br><br>
-          <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel turpis augue. Sed elementum tellus ac felis tincidunt eleifend. Nulla commodo urna in neque egestas, ut suscipit ipsum cursus. Aliquam erat volutpat. Mauris tempor, ex vitae tincidunt tristique, magna mauris dapibus ante, in euismod ligula dolor in eros. Ut scelerisque hendrerit dui, nec faucibus dolor finibus non. Proin malesuada neque ut maximus mollis. Cras imperdiet massa mauris, at mollis turpis porttitor a. Nunc placerat molestie lectus ornare rutrum. Nam non volutpat odio. Integer sed pretium metus. Suspendisse posuere finibus consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; </p>
-        </div>
-      </div>
-    </div><br>
-  </div>
-  <div class="rand-parallax">
     <div class="container h-100">
-      <div class="row h-100 justify-content-center align-items-center">
-        <button class="btn btn-lg btn-primary" (click)="open()">Crear una consulta</button>
-      </div>
+        <div class="row align-items-center h-100">
+            <div class="col-6 mx-auto">
+                <div style="width: 36 rem" class="card h-100 justify-content-center">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col vl">
+                        <div class="card-body">
+                          <img src="{{this.organization.LogoUrl}}" style="max-width: 150px;">
+                          <div class="card-title">{{this.organization.Name}}</div>
+                          <div class="card-subtitle mb-2 text-muted">{{this.organization.Description}}</div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <!-- TODO : ADD INFO ABOUT THE TYPE OF CONFLICTS OF CODE PREVENT -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
     </div>
   </div>
-  <div class="footer"><br>
-    <p class="text-center"> Social Dinapp, C/ Santa Virgilia, 14.  2º A Madrid-28033, (+34) 616515443 </p>
+  <div class="footer" style="background: white;"><br>
+    <p class="text-center"> Code prevent, C/ Santa Virgilia, 14.  2º A Madrid-28033, (+34) 616515443 </p>
   </div>
 </div>

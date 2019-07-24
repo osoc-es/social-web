@@ -8,12 +8,37 @@ html {
 }
 
 .parallax {
-  background: url('../../assets/john-mark-kuznietsov-397655.jpg') ;
   height: 100vh;
-  background-attachment: fixed;
-  background-position: center;
+}
+
+.navbar {
+  height: 10vh;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+  background-color: #244860 !important;
+}
+
+.btn-outline-primary {
+  border-color: #244860 !important;
+  color: #244860 !important;
+}
+
+.btn-outline-primary:hover {
+  background: #244860 !important;
+  color: white !important;
+}
+
+
+.footer {
+  height: 10vh;
+}
+
+.background {
+  background: url('../../assets/background.png');
   background-repeat: no-repeat;
-  background-size: cover; 
+  background-size: cover;
+  height: 80vh;
 }
 
 .rand-parallax {

@@ -1,3 +1,4 @@
+import { User } from './../interfaces/user';
 import { AUTHService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -63,16 +64,24 @@ export class LoginComponent implements OnInit {
   }
 
   login(form) {
-    this.auth.login(form.value).subscribe(() => {
-      // localStorage.setItem('TOKEN', token);
-      if (localStorage.getItem('EMAIL') !== 'GUEST') {
-        localStorage.setItem('EMAIL', form.value.Email);
-        this.activeModal.close();
-        this.router.navigateByUrl('home');
-      } else {
-        localStorage.setItem('EMAIL', form.value.Email);
-        this.activeModal.close();
-      }
+    const body = form.value;
+    body.OrgId = localStorage.getItem('ORG_ID');
+    this.auth.login(body).subscribe(() => {
+      this.auth.profile(form.value.Email).subscribe((profile: User) => {
+        // localStorage.setItem('TOKEN', token);
+        if (profile.title !== 'super' && profile.OrgId !== localStorage.getItem('ORG_ID')) {
+          this.err = 'El usuario no pertenece a esta organización';
+        } else {
+          if (localStorage.getItem('EMAIL') !== 'GUEST') {
+            localStorage.setItem('EMAIL', form.value.Email);
+            this.activeModal.close();
+            this.router.navigateByUrl('home');
+          } else {
+            localStorage.setItem('EMAIL', form.value.Email);
+            this.activeModal.close();
+          }
+        }
+      });
     }, (err) => {
       this.err = 'Usuario o contraseña incorrecta';
     });
@@ -95,7 +104,9 @@ export class LoginComponent implements OnInit {
       this.err = 'Las contraseñas no coinciden';
     } else {
       this.err = '';
-      this.auth.register(form.value).subscribe(() => {
+      const body = form.value;
+      body.OrgId = localStorage.getItem('ORG_ID');
+      this.auth.register(body).subscribe(() => {
         if (localStorage.getItem('EMAIL') !== 'GUEST') {
           localStorage.setItem('EMAIL', form.value.Email);
           this.activeModal.close();

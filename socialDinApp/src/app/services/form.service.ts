@@ -20,7 +20,7 @@ export class FormService {
   }
 
   getConflictsFromProject(projectId) {
-    return this.http.get(`${this.adress}projects/conflicts/${localStorage.getItem('ORG_ID')}/${projectId}`)
+    return this.http.get(`${this.adress}projects/conflicts/${localStorage.getItem('ORG_ID')}/${projectId}`);
   }
 
   getForm(id) {
