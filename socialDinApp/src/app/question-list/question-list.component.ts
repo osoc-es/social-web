@@ -21,6 +21,7 @@ export class QuestionListComponent implements OnInit {
   questions: [Questions];
   email: string;
   error = '';
+  hasBeenSubmited = false;
 
   close() {
     this.error = '';
@@ -70,7 +71,7 @@ export class QuestionListComponent implements OnInit {
         array.push(ans);
       }
       this.dinapp.postAnswers(array).subscribe((data) => {
-        this.router.navigateByUrl('home');
+        this.hasBeenSubmited = true;
       }, (error: HttpErrorResponse) => {
         if (error.status === 409) {
           this.error = 'Ya has realizado este formulario';

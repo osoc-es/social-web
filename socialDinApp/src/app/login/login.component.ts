@@ -69,7 +69,9 @@ export class LoginComponent implements OnInit {
     this.auth.login(body).subscribe(() => {
       this.auth.profile(form.value.Email).subscribe((profile: User) => {
         // localStorage.setItem('TOKEN', token);
-        if (profile.title !== 'super' && profile.OrgId !== localStorage.getItem('ORG_ID')) {
+        console.log(profile.OrgId.toString());
+        console.log(localStorage.getItem('ORG_ID'));
+        if (profile.title !== 'super' && profile.OrgId.toString() !== localStorage.getItem('ORG_ID')) {
           this.err = 'El usuario no pertenece a esta organización';
         } else {
           if (localStorage.getItem('EMAIL') !== 'GUEST') {
